@@ -36,3 +36,24 @@ def nama(username):
         for row in users:
             if username in row[1]:
                 return (row[2])
+
+def registervalid(username):
+    # Spesifikasi program : Memvalidasi apakah input username tidak pernah digunakan
+	# ALGORITMA
+    import csv
+    with open('user.csv') as data:
+        users = csv.reader(data,delimiter=',') # membaca data
+        for row in users:
+            if username in row[1]:
+                return False
+
+def nextnumber():
+    # Spesifikasi program : Memvalidasi apakah input username tidak pernah digunakan
+	# ALGORITMA
+    import csv
+    baris = 0
+    with open('user.csv') as data:
+        users = csv.reader(data,delimiter=',')
+        for row in users:
+            baris += 1
+        return baris
