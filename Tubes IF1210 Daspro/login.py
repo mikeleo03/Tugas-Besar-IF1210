@@ -13,14 +13,14 @@ import admin as adm
 import user as us
 
 func.clearScreen()
-print('''-------------------------------
-          LOGIN PAGE
--------------------------------
-''')
 username = ""
 password = ""
 success = False # flag
 while(success == False): # selama input salah, program akan terus meminta input
+    print('''-------------------------------
+          LOGIN PAGE
+-------------------------------
+''')
     username = input("Masukan username : ")
     password = input("Masukan password : ")
     if var.loginvalid(username,password): # cek username dan pass valid
@@ -42,3 +42,5 @@ while(success == False): # selama input salah, program akan terus meminta input
         func.wait(1)
         func.clearLast
         print("Password atau username salah atau tidak ditemukan.")
+        func.wait(1.5)
+        func.clearScreen()
