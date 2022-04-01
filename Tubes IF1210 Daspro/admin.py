@@ -9,6 +9,7 @@
 import function as func
 import variables as var
 import help
+import register
 
 def funcadmin():
     # Spesifikasi program : Memunculkan fitur yang dapat diakses admin
@@ -23,7 +24,7 @@ def funcadmin():
         func.clearScreen()
         pilihLogin = func.pilihMenuAdmin()
         if(pilihLogin == 1): # register
-            print("# jalan fungsi register")
+            register.registAdmin()
         elif (pilihLogin == 2): # tambah_game
             print("# jalan fungsi tambah_game")
             # dst.....
