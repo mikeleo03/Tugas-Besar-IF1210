@@ -24,6 +24,17 @@ def usernamevalid(username):
             valid = False
     return valid
 
+def yesorno():
+    # Spesifikasi program : Menanayakan apakah akan melanjutkan memasukkan input
+	# ALGORITMA
+    print("Apakah akan melanjutkan memasukkan input? (y/n)")
+    while True:
+        pil = input()
+        if (pil == "n" or pil == "y"):
+            break
+        else:
+            print("input salah,masukkan y/n. (y/n)")
+    return(pil)
 
 def registAdmin():
     # Spesifikasi program : Memunculkan akses register new user untuk admin
@@ -48,23 +59,26 @@ def registAdmin():
                 print("Loading...")
                 func.wait(1)
                 print("Username hanya dapat mengandung alfabet A-Z, a-z, underscore (_), strip (-), dan angka 0-9")
-                success = False
-                func.wait(1.5)
+                if yesorno() == "n":
+                    break
+                else:
+                    success = False
+                func.wait(1)
                 func.clearScreen()
         else:
             print("Loading...")
             func.wait(1)
             print(f"Username {username_baru} sudah terpakai, silakan menggunakan username lain.")
-            func.wait(1.5)
+            if yesorno() == "n":
+                break
+            else:
+                success = False
+            func.wait(1)
             func.clearScreen()
 
     # jika sudah benar
     if(success): 
-        import csv
-        with open('user.csv','a',newline='\n') as data:
-            # membuat objek writer
-            writer = csv.writer(data)
-            # menulis baris ke file CSV
-            writer.writerow([f"{var.nextnumber()}", f"{username_baru}", f"{nama}", f"{pswd_baru}","user",0])
+        # Menambahkan data member baru pada list
+        var.adduser(username_baru,nama,pswd_baru)
         print(f"\nUsername {username_baru} telah berhasil register ke dalam “Binomo”.")
     func.goBackEnter()
