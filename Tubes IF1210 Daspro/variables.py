@@ -32,7 +32,7 @@ def banyakkolom(namafile):
     # hitung jumlah baris dan kolom dengan for loop
     kolom = 1
     for i in stringdata:
-        if i == ',':
+        if i == ';':
             kolom += 1
         if i == '\n':
             break
@@ -50,30 +50,56 @@ def banyakbaris(namafile):
 # 5. Ubah csv menjadi array yang bisa dimodifikasi
 def csvtoarray(namafile):
     stringdata = bacacsv(namafile)
-    baris = banyakbaris(namafile)
-    kolom = banyakkolom(namafile)
-    chara = banyakchar(namafile)
     # Inisiasi array data
-    arraydata = [["" for k in range (kolom)] for b in range (baris)]
-    start = 0
-    finish = -1
-    # mengisi arrydata dengan data dari csv
-    for b in range(baris):
-        for k in range(kolom):
-            start = finish + 1
-            if (k == kolom - 1):
-                finish = stringdata[start:chara].find('\n') + finish + 1
-            else:
-                finish = stringdata[start:chara].find(',') + finish + 1
-            arraydata[b][k] = stringdata[start:finish]
-    return arraydata
+    arraydata = [['']]
+    baris = 0
+    kolom = 0
 
+    #mengubah string ke array
+    for i in stringdata:
+        if i == ';':
+            arraydata[baris] += ['']
+            kolom += 1
+        elif i == '\n':
+            arraydata += [['']]
+            baris += 1
+            kolom = 0
+        else:
+            arraydata[baris][kolom] += i
+    # mengisi arrAkhir dengan data dari csv
+    arrAkhir = [['' for i in range(kolom)] for j in range(baris)]
+    for i in range(baris):
+        arrAkhir[i] = arraydata[i]
+    return arrAkhir
+
+# 6. Fungsi len 
+def length (arr):
+    count = 0
+    for i in arr:
+        count = count + 1
+    return count
+
+# 7. Pop baris pertama
+def pop_firstline(arr):
+    baris= length(arr)
+    arr_baru = [[] for i in range (baris-1)]
+    for i in range (baris-1):
+        arr_baru[i] += arr[i+1]
+    return arr_baru
+
+# 8. Remove
+def popArr(arr, a):
+    arr_baru=[]
+    for i in range (length(arr)):
+        if i!=a:
+            arr_baru += [arr[i]]
+    return arr_baru
 
 # KUMPULAN SUBPROGRAM PENGOLAHAN DATA USER.CSV
 # 1. Inisialisasi
-arraydatauser = csvtoarray('user.csv')
-barisuser = banyakbaris('user.csv')
-kolomuser = banyakkolom('user.csv')
+arraydatauser = csvtoarray('C:/Users/Asus/Downloads/tubes/user.csv')
+barisuser = banyakbaris('C:/Users/Asus/Downloads/tubes/user.csv')
+kolomuser = banyakkolom('C:/Users/Asus/Downloads/tubes/user.csv')
 
 # 2.
 def loginvalid(username,password):
@@ -132,6 +158,10 @@ def adduser(username_baru,nama,pswd_baru):
     # menambah array baru ke database
     arraydatauser[nextnumber()-1] += [baru]
 
-# Bisa dilanjut...
-# KUMPULAN SUBPROGRAM PENGOLAHAN DATA GAME.CSV
-# KUMPULAN SUBPROGRAM PENGOLAHAN DATA RIWAYAT.CSV dst
+# 8.
+def user_id(username):
+    # Spesifikasi program : Menampilkan id si pemilik username
+	# ALGORITMA
+    for b in range(barisuser):
+        if arraydatauser[b][1] == username:
+            return arraydatauser[b][0]
