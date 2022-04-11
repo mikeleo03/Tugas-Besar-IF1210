@@ -10,7 +10,7 @@
 # import fungsi, prosedur, dan variabel buatan dari file lain
 import function as func
 import variables as var 
-csv ='C:/Users/Asus/Downloads/tubes/user.csv'
+csv ='user.csv'
 arraydatauser = var.csvtoarray(csv)
 barisuser = var.banyakbaris(csv)
 kolomuser = var.banyakkolom(csv)
