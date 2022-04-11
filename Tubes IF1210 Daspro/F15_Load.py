@@ -1,7 +1,8 @@
 import variables as var
+import function as func
 import argparse
 import os
-
+import F03_Login as F03
 
 parser = argparse.ArgumentParser()
 parser.add_argument("nama_folder", help="loading semua file csv yang digunakan dalam program ini")
@@ -13,9 +14,9 @@ for (path, directories, files) in os.walk(os.getcwd()):
         if dir == args.nama_folder:
             cond = True
             print("Loading…")
+            func.wait(1.5)
             print("# Panggil prosedur load data")
             print("Selamat datang di antarmuka “Binomo”")
-            print("# Meminta perintah berikutnya… (cth: register, login, dll.)")
             for (path2, directories2, files2) in os.walk(os.path.join(path, dir)):
                 for file in files2:
                     if file == "game.csv":
@@ -34,6 +35,17 @@ for (path, directories, files) in os.walk(os.getcwd()):
                         arr_user= var.pop_firstline(var.csvtoarray(os.path.join(path2, file)))
                         baris_user= var.length(arr_user) 
                         kolom_user = var.length(arr_user[0])
+            benar = True
+            while benar:
+                print("Meminta perintah berikutnya")
+                ketik = input()
+                if (ketik == "login"):
+                    print("# Masuk ke laman Login")
+                    func.wait(3)
+                    F03.login()
+                else:
+                    print("\nperintah tidak valid, silahkan input ulang")
+                    benar = True
                     
 if cond == False:
     print('Folder "' + str(args.nama_folder) + '" tidak ditemukan.')
