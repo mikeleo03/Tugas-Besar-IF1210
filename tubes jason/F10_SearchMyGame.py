@@ -10,9 +10,9 @@
 import function as func
 import variables as var
 # deklarasi CSV
-data_inv = 'C:/Users/Asus/OneDrive - Institut Teknologi Bandung/Documents/ITB/TPB ITB 2021/Daspro/tugas/tubes/Tubes IF1210 Daspro/CSV/kepemilikan.csv'
-hist = 'C:/Users/Asus/OneDrive - Institut Teknologi Bandung/Documents/ITB/TPB ITB 2021/Daspro/tugas/tubes/Tubes IF1210 Daspro/CSV/riwayat.csv'
-game = 'C:/Users/Asus/OneDrive - Institut Teknologi Bandung/Documents/ITB/TPB ITB 2021/Daspro/tugas/tubes/Tubes IF1210 Daspro/CSV/game.csv'
+data_inv = 'kepemilikan.csv'
+hist = 'riwayat.csv'
+game = 'game.csv'
 
 arr_game= var.csvtoarray(game)
 baris_game= var.banyakbaris(game)
