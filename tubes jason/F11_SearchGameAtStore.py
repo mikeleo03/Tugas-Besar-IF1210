@@ -10,7 +10,7 @@
 # import fungsi, prosedur, dan variabel buatan dari file lain
 import function as func
 import variables as var
-game = 'C:/Users/Asus/OneDrive - Institut Teknologi Bandung/Documents/ITB/TPB ITB 2021/Daspro/tugas/tubes/Tubes IF1210 Daspro/CSV/game.csv'
+game = 'game.csv'
 arr_game= var.csvtoarray(game)
 baris= var.banyakbaris(game)
 kolom = var.banyakkolom(game)
