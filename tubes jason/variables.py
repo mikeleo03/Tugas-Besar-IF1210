@@ -117,9 +117,9 @@ def array_max_kolom(arr):
 
 # KUMPULAN SUBPROGRAM PENGOLAHAN DATA USER.CSV
 # 1. Inisialisasi
-arraydatauser = csvtoarray('C:/Users/Asus/Downloads/tubes/user.csv')
-barisuser = banyakbaris('C:/Users/Asus/Downloads/tubes/user.csv')
-kolomuser = banyakkolom('C:/Users/Asus/Downloads/tubes/user.csv')
+arraydatauser = csvtoarray('user.csv')
+barisuser = banyakbaris('user.csv')
+kolomuser = banyakkolom('user.csv')
 
 # 2.
 def loginvalid(username,password):
