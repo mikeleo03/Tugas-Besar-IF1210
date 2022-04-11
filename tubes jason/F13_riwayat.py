@@ -11,8 +11,8 @@ import function as func
 import variables as var
 import F10_SearchMyGame as inv
 
-data_inv = 'C:/Users/Asus/OneDrive - Institut Teknologi Bandung/Documents/ITB/TPB ITB 2021/Daspro/tugas/tubes/Tubes IF1210 Daspro/CSV/kepemilikan.csv'
-hist = 'C:/Users/Asus/OneDrive - Institut Teknologi Bandung/Documents/ITB/TPB ITB 2021/Daspro/tugas/tubes/Tubes IF1210 Daspro/CSV/riwayat.csv'
+data_inv = 'kepemilikan.csv'
+hist = 'riwayat.csv'
 # deklarasi csv menjadi array
 arr_data= var.pop_firstline(var.csvtoarray(data_inv))
 baris_data= var.length(arr_data)
