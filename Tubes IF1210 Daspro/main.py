@@ -8,10 +8,8 @@
 
 # ALGORITMA
 # import fungsi, prosedur, dan variabel buatan dari file login.py dan variables.py
-import login
-import variables as var
+import F15_Load as F15
+# import variables as var
 
-# Menjalankan fungsi login
-login
-
-# Lalu, menjalankan fungsi admin jika admin dan user jika user
+# Menjalankan fungsi load
+F15
