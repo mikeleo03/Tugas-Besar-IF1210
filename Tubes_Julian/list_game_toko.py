@@ -41,21 +41,31 @@ def showSort(M,row):
                 else :
                     e = M[j][i]+(sel*" ")+"||"
                 print(e, end="")
+            fun.wait(0.001)
         print("")
   
 def FindMin(M,col,row,x,mark):
     x = abs(x)
     min = [" " for k in range(col)]
     for j in range(1,row):
-        for i in range(col):
-            if M[j][x]!=mark:
-                for k in range(col):
-                    min[k] = M[j][k]
-                break
+        if M[j][x]!=mark:
+            for k in range(col):
+                min[k] = M[j][k]
+            break
     for j in range(1,row):
-        for i in range(col):
-            if M[j][x]!=mark:
+        if M[j][x]!=mark:
+            if x!=4:
                 if int(M[j][x])!=mark and int(M[j][x])<int(min[x]):
+                    for k in range(col):
+                        min[k] = M[j][k]
+            else:
+                num1 = ""
+                num2 = ""
+                for e in M[j][x]:
+                    if e!=".": num1 += e
+                for e in min[x]:
+                    if e!=".": num2 += e
+                if int(num1)!=mark and int(num1)<int(num2):
                     for k in range(col):
                         min[k] = M[j][k]
     return min
@@ -64,15 +74,24 @@ def FindMax(M,col,row,x,mark):
     x = abs(x)
     max = [" " for k in range(col)]
     for j in range(1,row):
-        for i in range(col):
-            if M[j][x]!=mark:
-                for k in range(col):
-                    max[k] = M[j][k]
-                break
+        if M[j][x]!=mark:
+            for k in range(col):
+                max[k] = M[j][k]
+            break
     for j in range(1,row):
-        for i in range(col):
-            if M[j][x]!=mark:
+        if M[j][x]!=mark:
+            if x!=4:
                 if int(M[j][x])!=mark and int(M[j][x])>int(max[x]):
+                    for k in range(col):
+                        max[k] = M[j][k]
+            else:
+                num1 = ""
+                num2 = ""
+                for e in M[j][x]:
+                    if e!=".": num1 += e
+                for e in max[x]:
+                    if e!=".": num2 += e
+                if int(num1)!=mark and int(num1)>int(num2):
                     for k in range(col):
                         max[k] = M[j][k]
     return max         
@@ -80,7 +99,7 @@ def FindMax(M,col,row,x,mark):
 def Fill_M(M,N,col,row,x,mark,min,max):
     con = 1
     j = 1
-    if x>0:
+    if x>=0:
         while con<row:
             if M[j][x]==min[x]:
                 for k in range(col):
@@ -114,31 +133,22 @@ def SortList(M,col,row):
         min = FindMin(M,col,row,x,mark)
         max = FindMax(M,col,row,x,mark)
     val = True
-    if x>0:                                                         # Menampilkan data naik
-        if x==4: SL = Fill_M(M,SLG,col,row,x,mark,min,max)          # Harga
-        else :SL = Fill_M(M,SLG,col,row,x,mark,min,max)             # Tahun
+    if x>0: SL = Fill_M(M,SLG,col,row,x,mark,min,max)                         # Menampilkan data naik
     elif x==0:
         print("Skema sorting berupa id")
         SL = M
-    else:                                                          # Menampilkan data turun
-        if x==(-4): SL = Fill_M(M,SLG,col,row,x,mark,min,max)      # Harga
-        elif x==(-3) :SL = Fill_M(M,SLG,col,row,x,mark,min,max)    # Tahun
+    else:                                                                     # Menampilkan data turun
+        if x==(-4) or x==(-3): SL = Fill_M(M,SLG,col,row,x,mark,min,max)      
         else: 
             val = False
             print("Skema Sorting tidak valid!")
     if val:
         showSort(SL,row)
         
-
-
-#def sorting(cSv,M,col,row):
-
-
 # Spesifikasi program : Menambahkan game pada list
 # KAMUS
 # file : csv
 # GList : array [1..row] of array [1..col] of string
-# NList : array [1..(row+1)] of array [1..col] of string
 # ALGORITMA
 file = open("game.csv",'r')
 # # Definisi baris dan kolom (didefinisikan sebelumnya)
