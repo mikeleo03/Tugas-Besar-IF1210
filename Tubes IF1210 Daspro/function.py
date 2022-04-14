@@ -162,11 +162,11 @@ def OpenCSV(cSv,col,row):
     j = 0
     for c in arrayCsV2:
         s = ""
-        c += ","
+        c += ";"
         r2 = lList(c)
         i = 0
         for l in range(r2):
-            if c[l]!=",":
+            if c[l]!=";":
                 s += c[l]
             else: 
                 arrayCsV3[j][i] = s  
@@ -191,7 +191,7 @@ def writeCSV(cSv,M,col,row):
         e = ""
         for i in range(col):
             if i!=col-1:
-                e+=M[j][i]+","
+                e+=M[j][i]+";"
             else:
                 e+=M[j][i]
                 TabS[j]=e 
