@@ -121,14 +121,6 @@ arraydatauser = csvtoarray('user.csv')
 barisuser = banyakbaris('user.csv')
 kolomuser = banyakkolom('user.csv')
 
-# 2.
-def loginvalid(username,password):
-    # Spesifikasi program : Memvalidasi apakah input username dan password sudah valid
-	# ALGORITMA
-    for b in range(barisuser):
-        if arraydatauser[b][1] == username and arraydatauser[b][3] == password:
-            return True
-
 # 3.
 def role(username,password):
     # Spesifikasi program : Menerima input username dan password serta mengeluarkan 
@@ -146,38 +138,6 @@ def nama(username):
         if arraydatauser[b][1] == username:
             return arraydatauser[b][2]
 
-# 5.
-def registervalid(username):
-    # Spesifikasi program : Memvalidasi apakah input username tidak pernah digunakan
-	# ALGORITMA
-    for b in range(barisuser):
-        if arraydatauser[b][1] == username:
-            return False
-
-# 6.
-def nextnumber():
-    # Spesifikasi program : menentukan penomoran untuk data berikutnya
-	# ALGORITMA
-    for b in range(barisuser-1,1,-1): # reverse loop
-        return int(arraydatauser[b][0]) + 1
-
-# 7.
-def adduser(username_baru,nama,pswd_baru):
-    # Spesifikasi program : Menambahkan data member baru pada list
-    # ALGORITMA
-    # Deklarasi array baru user
-    baru = ['' for i in range(6)]
-    # mengisi array baru dengan data user baru
-    baru[0] = nextnumber()
-    baru[1] = username_baru
-    baru[2] = nama
-    baru[3] = pswd_baru
-    baru[4] = "user"
-    baru[5] = 0
-
-    # menambah array baru ke database
-    arraydatauser[nextnumber()-1] += [baru]
-
 # 8.
 def user_id(username):
     # Spesifikasi program : Menampilkan id si pemilik username
@@ -194,44 +154,3 @@ def usernamevalid(username):
         if arraydatauser[b][1] == username:
             return True
     return False
-
-# KUMPULAN SUBPROGRAM PENGOLAHAN DATA KEPEMILIKAN.CSV
-# 1. Inisialisasi
-arraydatakepemilikan = csvtoarray('kepemilikan.csv')
-bariskepemilikan = banyakbaris('kepemilikan.csv')
-kolomkepemilikan = banyakkolom('kepemilikan.csv')
-
-# 2.
-def addkepemilikan(gameid_baru,userid_baru):
-    # Spesifikasi program : Menambahkan data game baru pada list kepemilikan
-    # ALGORITMA
-    # Deklarasi array baru user
-    gamebaru = ['' for i in range(2)]
-    # mengisi array baru dengan data user baru
-    gamebaru[0] = gameid_baru
-    gamebaru[1] = int(userid_baru)
-
-    # menambah array baru ke database
-    arraydatakepemilikan[nextnumber()-1] += [gamebaru]
-
-# KUMPULAN SUBPROGRAM PENGOLAHAN DATA RIWAYAT.CSV
-# 1. Inisialisasi
-arraydatariwayat = csvtoarray('riwayat.csv')
-barisriwayat = banyakbaris('riwayat.csv')
-kolomriwayat = banyakkolom('riwayat.csv')
-
-# 3.
-def addriwayat(ID_Game,namagame,hargagame,ID_user,tahun):
-    # Spesifikasi program : Menambahkan data riwayat pembelian game oleh user
-    # ALGORITMA
-    # Deklarasi array baru user
-    riwayatbaru = ['' for i in range(5)]
-    # mengisi array baru dengan data user baru
-    riwayatbaru[0] = ID_Game
-    riwayatbaru[1] = namagame
-    riwayatbaru[2] = hargagame
-    riwayatbaru[3] = ID_user
-    riwayatbaru[4] = tahun
-
-    # menambah array baru ke database
-    arraydatariwayat[nextnumber()-1] += [riwayatbaru]
