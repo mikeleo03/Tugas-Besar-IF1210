@@ -106,11 +106,11 @@ while benar:
         benar = True
 
 
-# Fungsi yang mungkin masuk loop pilih menu (Kumpulin sini dulu ges)
+# Fungsi yang mungkin masuk loop pilih menu abis login (Kumpulin sini dulu ges)
 F02.registAdmin(arr_user)
 F03.login(arr_user)
-F08.buygame(user_id,arr_game, arr_kepemilikan, arr_riwayat, arr_user)
-F09.game_list(user_id, arr_kepemilikan, arr_game)
+F08.buygame(user_id,arr_game,arr_kepemilikan,arr_riwayat,arr_user)
+F09.game_list(user_id,arr_kepemilikan,arr_game)
 F14.help()
-F16.save(arr_game, arr_kepemilikan, arr_riwayat, arr_user)
-F17.exit(arr_game, arr_kepemilikan, arr_riwayat, arr_user)
+F16.save(arr_game,arr_kepemilikan,arr_riwayat,arr_user)
+F17.exit(arr_game,arr_kepemilikan,arr_riwayat,arr_user)
