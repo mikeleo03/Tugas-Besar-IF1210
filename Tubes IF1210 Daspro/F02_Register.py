@@ -12,6 +12,9 @@ import variables as var
 
 def usernamevalid(username):
     # Spesifikasi program : Memeriksa apakah username sudah valid
+    # KAMUS LOKAL
+    # valid : boolean
+    # i, username : string
 	# ALGORITMA
     # menggunakan pendekatan ASCII
     # A - Z : 65 - 90
@@ -24,11 +27,46 @@ def usernamevalid(username):
             valid = False
     return valid
 
+def registervalid(username,arr_user):
+    # Spesifikasi program : Memvalidasi apakah input username tidak pernah digunakan
+    # KAMUS LOKAL
+    # baris, b : integer
+    # username : string
+    # arr_user : array of string
+	# ALGORITMA
+    baris = var.banyakbaris(arr_user)
+    for b in range(baris):
+        if arr_user[b][1] == username:
+            return False
+
+def adduser(username_baru,nama,pswd_baru,arr_user):
+    # Spesifikasi program : Menambahkan data member baru pada list
+    # KAMUS LOKAL
+    # baris : integer
+    # username_baru, nama, pswd_baru : string
+    # baru, arr_user : array of string
+    # ALGORITMA
+    # Deklarasi array baru user
+    baru = ['' for i in range(6)]
+    baris = var.banyakbaris(arr_user)
+    # mengisi array baru dengan data user baru
+    baru[0] = baris
+    baru[1] = username_baru
+    baru[2] = nama
+    baru[3] = pswd_baru
+    baru[4] = "user"
+    baru[5] = 0
+
+    # menambah array baru ke database
+    arr_user[baris-1] += [baru]
+
 def yesorno():
     # Spesifikasi program : Menanayakan apakah akan melanjutkan memasukkan input
+    # KAMUS LOKAL
+    # pil : string
 	# ALGORITMA
-    print("Apakah akan melanjutkan memasukkan input? (y/n)")
     while True:
+        print("Apakah akan melanjutkan memasukkan input? (y/n)")
         pil = input()
         if (pil == "n" or pil == "y"):
             break
@@ -36,8 +74,13 @@ def yesorno():
             print("input salah,masukkan y/n. (y/n)")
     return(pil)
 
-def registAdmin():
+def registAdmin(arr_user):
     # Spesifikasi program : Memunculkan akses register new user untuk admin
+    # KAMUS LOKAL
+    # success : boolean
+    # baris : integer
+    # username_baru, nama, pswd_baru : string
+    # baru, arr_user : array of string
 	# ALGORITMA
     func.clearScreen()
     func.wait(1)
@@ -50,7 +93,7 @@ def registAdmin():
         nama = input("Masukan nama : ")
         username_baru = input("Masukan username : ")
         pswd_baru = input("Masukan password : ")
-        if var.registervalid(username_baru) != False:
+        if registervalid(username_baru,arr_user) != False:
             if usernamevalid(username_baru):
                 print("Loading...")
                 func.wait(1)
@@ -58,7 +101,7 @@ def registAdmin():
             else :
                 print("Loading...")
                 func.wait(1)
-                print("Username hanya dapat mengandung alfabet A-Z, a-z, underscore (_), strip (-), dan angka 0-9")
+                print("\nUsername hanya dapat mengandung alfabet A-Z, a-z, underscore (_), strip (-), dan angka 0-9")
                 if yesorno() == "n":
                     break
                 else:
@@ -68,7 +111,7 @@ def registAdmin():
         else:
             print("Loading...")
             func.wait(1)
-            print(f"Username {username_baru} sudah terpakai, silakan menggunakan username lain.")
+            print(f"\nUsername {username_baru} sudah terpakai, silakan menggunakan username lain.")
             if yesorno() == "n":
                 break
             else:
@@ -79,6 +122,6 @@ def registAdmin():
     # jika sudah benar
     if(success): 
         # Menambahkan data member baru pada list
-        var.adduser(username_baru,nama,pswd_baru)
+        adduser(username_baru,nama,pswd_baru,arr_user)
         print(f"\nUsername {username_baru} telah berhasil register ke dalam “Binomo”.")
     func.goBackEnter()
