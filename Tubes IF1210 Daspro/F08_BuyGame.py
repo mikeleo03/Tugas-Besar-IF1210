@@ -9,37 +9,65 @@
 import function as func
 import variables as var
 
-# Akses data user.csv
-arraydatauser = var.csvtoarray('user.csv')
-
-# Akses data game.csv
-arraydatagame = var.csvtoarray('game.csv')
-barisgame = var.banyakbaris('game.csv')
-
-# Akses data kepemilikan.csv
-arraydatakepemilikan = var.csvtoarray('kepemilikan.csv')
-bariskepemilikan = var.banyakbaris('kepemilikan.csv')
-
-def buygame(ID_user):
-    # Spesifikasi program : Memunculkan akses buygame untuk user
-
+def addkepemilikan(gameid_baru,userid_baru,arr_kepemilikan):
+    # Spesifikasi program : Menambahkan data game baru pada list kepemilikan
     # KAMUS LOKAL
-    # hargagame, saldo : integer
+    # userid_baru, baris : integer
+    # gameid_baru : string
+    # gamebaru, arr_kepemilikan : array of string
+    # ALGORITMA
+    # Deklarasi array baru user
+    gamebaru = ['' for i in range(2)]
+    baris = var.banyakbaris(arr_kepemilikan)
+    # mengisi array baru dengan data user baru
+    gamebaru[0] = gameid_baru
+    gamebaru[1] = int(userid_baru)
+
+    # menambah array baru ke database
+    arr_kepemilikan[baris] += [gamebaru]
+
+def addriwayat(ID_Game,namagame,hargagame,ID_user,tahun,arr_riwayat):
+    # Spesifikasi program : Menambahkan data riwayat pembelian game oleh user
+    # KAMUS LOKAL
+    # hargagame, ID_user, tahun, baris : integer
+    # ID_Game, namagame : string
+    # riwayatbaru, arr_riwayat : array of string
+    # ALGORITMA
+    # Deklarasi array baru user
+    riwayatbaru = ['' for i in range(5)]
+    baris = var.banyakbaris(arr_riwayat)
+    # mengisi array baru dengan data user baru
+    riwayatbaru[0] = ID_Game
+    riwayatbaru[1] = namagame
+    riwayatbaru[2] = hargagame
+    riwayatbaru[3] = ID_user
+    riwayatbaru[4] = tahun
+
+    # menambah array baru ke database
+    arr_riwayat[baris] += [riwayatbaru]
+
+def buygame(ID_user,arr_game, arr_kepemilikan, arr_riwayat, arr_user):
+    # Spesifikasi program : Memunculkan akses buygame untuk user
+    # KAMUS LOKAL
+    # hargagame, saldo, indeksdata : integer
     # namagame, ID_Game : string
     # success, saldocukup, punya : boolean
     # gameid_kepemilikan, id_pemilik : array of string
     # data_game_toko, data_harga_game, data_stok_game : array of string
-
 	# ALGORITMA
     func.clearScreen()
     func.wait(1)
     hargagame = 0
     saldo = 0
+    indeksdata = 0
     namagame = ''
     ID_Game = ''
     success = False
     saldocukup = True
     punya = False
+
+    bariskepemilikan = var.banyakbaris(arr_kepemilikan)
+    barisgame = var.banyakbaris(arr_game)
     
     print("=========== Beli Game Baru ===========")
     ID_Game = input("Masukkan ID Game: ")
@@ -50,13 +78,13 @@ def buygame(ID_user):
     data_harga_game = ['' for i in range(barisgame)]
     data_stok_game = ['' for i in range(barisgame)]
     for b in range(bariskepemilikan):
-        gameid_kepemilikan[b] = arraydatakepemilikan[b][0]
-        id_pemilik[b] = arraydatakepemilikan[b][1]
+        gameid_kepemilikan[b] = arr_kepemilikan[b][0]
+        id_pemilik[b] = arr_kepemilikan[b][1]
     for b in range(barisgame):
-        data_game_toko[b] = arraydatagame[b][0]
-        data_harga_game[b] = arraydatagame[b][4]
-        data_stok_game[b] = arraydatagame[b][5]
-    saldo = int(arraydatauser[ID_user][5])
+        data_game_toko[b] = arr_game[b][0]
+        data_harga_game[b] = arr_game[b][4]
+        data_stok_game[b] = arr_game[b][5]
+    saldo = int(arr_user[ID_user][5])
         
     # Pengolahan data berdasar kemungkinan
     for i in range(bariskepemilikan):
@@ -69,6 +97,7 @@ def buygame(ID_user):
             for i in range(barisgame):
                 # Kasus 2 : Berhasil, game ada, game belum dimiliki, dan saldo cukup
                 if data_game_toko[i] == ID_Game and saldo >= int(data_harga_game[i]) and int(data_stok_game[i])>0:
+                    indeksdata += i
                     namagame = ID_Game
                     hargagame += int(data_harga_game[i])
                     success = True
@@ -82,6 +111,7 @@ def buygame(ID_user):
                     success = False
                     break
 
+    # Segala macam kemungkinan output
     if punya == True and success == False: # Jika game sudah dipunyai
         print("Loading...")
         func.wait(1)
@@ -99,6 +129,7 @@ def buygame(ID_user):
         func.wait(1)
         # Mengurangi saldo, menambah game ke koleksi
         saldo -= hargagame
-        var.addkepemilikan(ID_Game,ID_user)
+        addkepemilikan(ID_Game,ID_user,arr_kepemilikan)
+        addriwayat(ID_Game,namagame,hargagame,ID_user,2022,arr_riwayat)
         print("\nGame",namagame,"berhasil dibeli!")
     func.goBackEnter()
