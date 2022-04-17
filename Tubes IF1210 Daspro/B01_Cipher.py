@@ -52,7 +52,7 @@ def cipher(P):
     for i in range(n):
         if isNumber(P[i]):                              # Kalau elemen password berupa angka
             tempNum = int(P[i])
-            if tempNum>7: tempNum -= 3  
+            if tempNum>=7: tempNum -= 3  
             else: tempNum +=3
             e += str(tempNum)
         else:
