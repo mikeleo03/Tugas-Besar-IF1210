@@ -9,23 +9,6 @@
 # import fungsi, prosedur, dan variabel buatan dari file lain
 import function as func
 import variables as var
-# deklarasi CSV
-data_inv = 'kepemilikan.csv'
-hist = 'riwayat.csv'
-game = 'game.csv'
-
-arr_game= var.csvtoarray(game)
-baris_game= var.banyakbaris(game)
-kolom_game = var.banyakkolom(game)
-# Akses data csv kepemilikan
-arr_data= var.pop_firstline(var.csvtoarray(data_inv))
-baris_data= var.length(arr_data)
-kolom_data = var.length(arr_data[0])
-
-# Akses data csv riwayat
-arr_hist= var.pop_firstline(var.csvtoarray(hist))
-baris_hist= var.length(arr_hist)
-kolom_hist = var.length(arr_hist[0])
 
 def my_game(username, arr_game, arr_kepemilikan):
     # Spesifikasi program : menghasilkan array dari inventory game user
