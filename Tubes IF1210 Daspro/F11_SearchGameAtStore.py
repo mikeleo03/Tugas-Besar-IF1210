@@ -10,10 +10,6 @@
 # import fungsi, prosedur, dan variabel buatan dari file lain
 import function as func
 import variables as var
-game = 'game.csv'
-arr_game= var.csvtoarray(game)
-baris= var.banyakbaris(game)
-kolom = var.banyakkolom(game)
 
 def search_game_at_store (arr_game):
     # Spesifikasi program : menghasilkan array dari filter game di toko
@@ -34,7 +30,7 @@ def search_game_at_store (arr_game):
     tahun = str(input("Masukkan Tahun Rilis Game: "))
 
     # deklarasi
-    baris_game = baris-1 # banyak baris dari array game sebelum di filter dan dikurangi 1 karena baris pertamanya hanya berupa kategori
+    baris_game = var.length(arr_game)-1 # banyak baris dari array game sebelum di filter dan dikurangi 1 karena baris pertamanya hanya berupa kategori
     baris_search = 0 # banyak baris dari filter
     parameter = 0 # jumlah parameter input dari user
 
