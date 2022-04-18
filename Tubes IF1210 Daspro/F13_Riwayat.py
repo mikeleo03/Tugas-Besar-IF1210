@@ -9,20 +9,8 @@
 # import fungsi, prosedur, dan variabel buatan dari file lain
 import function as func
 import variables as var
-import F10_SearchInventory as inv
 
-data_inv = 'kepemilikan.csv'
-hist = 'riwayat.csv'
-# deklarasi csv menjadi array
-arr_data= var.pop_firstline(var.csvtoarray(data_inv))
-baris_data= var.length(arr_data)
-kolom_data = var.length(arr_data[0])
-
-arr_hist= var.pop_firstline(var.csvtoarray(hist))
-baris_hist= var.length(arr_hist)
-kolom_hist = var.length(arr_hist[0])
-
-def my_history(username):
+def my_history(username, arr_kepemilikan, arr_riwayat):
     # Spesifikasi program : menghasilkan array dari riwayat pembelian game user
 
     # KAMUS LOKAL
@@ -32,11 +20,16 @@ def my_history(username):
 
     # ALGORITMA
     user_id = var.user_id(username)
-    baris_data = var.length(arr_data) #baris dari array kepemilikan
+    arr_kepemilikan2 = var.pop_firstline(arr_kepemilikan)
+    baris_data = var.length(arr_kepemilikan2) # baris dari array kepemilikan
+    
+    arr_hist= var.pop_firstline(arr_riwayat) # menghapus baris pertama riwayat
+    baris_hist = var.length(arr_hist)
+    
     arr = ['' for i in range(baris_data)] # deklarasi array kosong
     baris=0
     for i in range (baris_data):
-        if arr_data[i][1] == user_id:
+        if arr_kepemilikan2[i][1] == user_id:
             (arr,baris) = var.array_search(arr_hist,baris_hist,3, user_id) #memfilter array riwayat sesuai user_id
             
     arr_filter =['' for i in range(baris)] # deklarasi array lagi agar tidak ada array yg kosong
@@ -44,7 +37,7 @@ def my_history(username):
         arr_filter[j]=arr[j]
     return(arr_filter,baris)
 
-def riwayat(username):
+def riwayat(username,arr_kepemilikan, arr_riwayat):
     # Spesifikasi program : menghasilkan riwayat pembelian game user
 
     # KAMUS LOKAL
@@ -56,7 +49,7 @@ def riwayat(username):
     func.wait(1)
     print("=========== Riwayat ===========")
     
-    (hist_user, baris_histUser) = my_history(username) # memanggil fungsi mygame untuk filter game sesuai user_id
+    (hist_user, baris_histUser) = my_history(username,arr_kepemilikan, arr_riwayat) # memanggil fungsi mygame untuk filter game sesuai user_id
 
     print()
     print("Daftar game:")
