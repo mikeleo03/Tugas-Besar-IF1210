@@ -27,7 +27,7 @@ arr_hist= var.pop_firstline(var.csvtoarray(hist))
 baris_hist= var.length(arr_hist)
 kolom_hist = var.length(arr_hist[0])
 
-def my_game(username):
+def my_game(username, arr_game, arr_kepemilikan):
     # Spesifikasi program : menghasilkan array dari inventory game user
 
     # KAMUS LOKAL
@@ -37,14 +37,19 @@ def my_game(username):
 
     # ALGORITMA
     user_id = var.user_id(username)
-    baris_inv = var.length(arr_data) # baris dari array kepemilikan
+    #deklarasi array
+    arr_data = var.pop_firstline(arr_kepemilikan)
+    baris_data = var.length(arr_data) # baris dari array kepemilikan
+    arr_game2 = var.pop_firstline(arr_game)
+    baris_game = var.length(arr_game2)
+    
     arr = ['' for i in range(baris_inv)] # deklarasi array kosong
     baris=0
-    for i in range (baris_inv):
+    for i in range (baris_data):
         if arr_data[i][1] == user_id:
             game_id = arr_data[i][0]
-            arr[baris] = (var.array_search(arr_game,baris_game,0, game_id)[0])[0] #memfilter array riwayat sesuai user_id
-            baris +=var.array_search(arr_game,baris_game,0, game_id)[1]
+            arr[baris] = (var.array_search(arr_game2,baris_game,0, game_id)[0])[0] #memfilter array riwayat sesuai user_id
+            baris +=var.array_search(arr_game2,baris_game,0, game_id)[1]
 
     arr_filter =['' for i in range(baris)] # deklarasi array lagi agar tidak ada array yg kosong
     for j in range (baris):
@@ -52,7 +57,7 @@ def my_game(username):
 
     return(arr_filter,baris)
 
-def search_my_game(username):
+def search_my_game(username, arr_game, arr_kepemilikan):
     # Spesifikasi program : menghasilkan array dari filter inventory game user, username sudah dicek dan pasti valid
 
     # KAMUS LOKAL
@@ -66,7 +71,7 @@ def search_my_game(username):
     game_id = str(input("Masukkan ID Game: "))
     tahun = str(input("Masukkan Tahun Rilis Game: "))
     
-    arr_mygame,baris_mygame = my_game(username)
+    arr_mygame,baris_mygame = my_game(username,arr_game, arr_kepemilikan)
     parameter = 0 # deklarasi jumlah parameter yang diinput user
     # filter data sesuai input parameter
     if (game_id ==""):
