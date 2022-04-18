@@ -2,20 +2,17 @@
 # Spesifikasi program : Program untuk top up saldo dari user
 
 # KAMUS
-# csv : CSV
-# arraydatauser : array of csv
+
+# array_user : array of csv
 # barisuser, kolomuser : integer
 
 # ALGORITMA
 # import fungsi, prosedur, dan variabel buatan dari file lain
 import function as func
 import variables as var 
-csv ='user.csv'
-arraydatauser = var.csvtoarray(csv)
-barisuser = var.banyakbaris(csv)
-kolomuser = var.banyakkolom(csv)
 
-def topup (arraydatauser):
+
+def topup (array_user):
     # Spesifikasi program : menambahkan saldo pada user
 
     # KAMUS LOKAL
@@ -28,20 +25,21 @@ def topup (arraydatauser):
     print("=========== Top Up Saldo ===========")
     username = str(input("Masukan username: "))
     saldo = int(input("Masukan saldo: "))
-
+    barisuser = var.length(arr_user)
+    
     if (var.usernamevalid(username)): # validasi username
         # mencari username yang sesuai di csv
         for b in range(barisuser):
-            if arraydatauser[b][1] == username:
+            if arr_user[b][1] == username:
                 i = b # menyimpan indeks tempat username
-        nama = arraydatauser[i][2]
-        saldoawal = arraydatauser[i][5]
+        nama = arr_user[i][2]
+        saldoawal = arr_user[i][5]
         saldoakhir = int(saldoawal) + saldo
         if (saldoakhir<0): # jika saldo hasilnya kurang dari 0 maka tidak valid
             print()
             print("Masukan tidak valid.")
         else:
-            arraydatauser[i][5]=str(saldoakhir)
+            arr_user[i][5]=str(saldoakhir)
             print()
             print ("Top up berhasil. Saldo", nama, "bertambah menjadi",saldoakhir)
     else: # tidak ada username yang sesuai
@@ -49,3 +47,4 @@ def topup (arraydatauser):
         print ('Username "'+str(username) + '" tidak ditemukan.' )
     print()
     func.goBackEnter()
+    return arr_user
