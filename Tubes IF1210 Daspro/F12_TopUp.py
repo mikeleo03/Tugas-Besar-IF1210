@@ -12,7 +12,7 @@ import function as func
 import variables as var 
 
 
-def topup (array_user):
+def topup (arr_user):
     # Spesifikasi program : menambahkan saldo pada user
 
     # KAMUS LOKAL
@@ -27,7 +27,7 @@ def topup (array_user):
     saldo = int(input("Masukan saldo: "))
     barisuser = var.length(arr_user)
     
-    if (var.usernamevalid(username)): # validasi username
+    if (var.usernamevalid(username,arr_user)): # validasi username
         # mencari username yang sesuai di csv
         for b in range(barisuser):
             if arr_user[b][1] == username:

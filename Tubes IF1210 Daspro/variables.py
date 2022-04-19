@@ -116,42 +116,40 @@ def array_max_kolom(arr):
     return arr_kolom 
 
 # KUMPULAN SUBPROGRAM PENGOLAHAN DATA USER.CSV
-# 1. Inisialisasi
-arraydatauser = csvtoarray('user.csv')
-barisuser = banyakbaris('user.csv')
-kolomuser = banyakkolom('user.csv')
-
-# 3.
-def role(username,password):
+# 1.
+def role(username,password,arr_user):
     # Spesifikasi program : Menerima input username dan password serta mengeluarkan 
     # role yang dimiliki username
 	# ALGORITMA
-    for b in range(barisuser):
-        if arraydatauser[b][1] == username and arraydatauser[b][3] == password:
-            return arraydatauser[b][4]
+    baris = length(arr_user)
+    for b in range(baris):
+        if arr_user[b][1] == username and arr_user[b][3] == password:
+            return arr_user[b][4]
 
-# 4.
-def nama(username):
+# 2.
+def nama(username,arr_user):
     # Spesifikasi program : Menampilkan nama si pemilik username
 	# ALGORITMA
-    for b in range(barisuser):
-        if arraydatauser[b][1] == username:
-            return arraydatauser[b][2]
+    baris = length(arr_user)
+    for b in range(baris):
+        if arr_user[b][1] == username:
+            return arr_user[b][2]
 
-# 8.
-def user_id(username):
+# 3.
+def user_id(username,arr_user):
     # Spesifikasi program : Menampilkan id si pemilik username
 	# ALGORITMA
-    for b in range(barisuser):
-        if arraydatauser[b][1] == username:
-            return arraydatauser[b][0]
+    baris = length(arr_user)
+    for b in range(baris):
+        if arr_user[b][1] == username:
+            return arr_user[b][0]
 
-# 9.  (Fungsi tambahan Jason)
+# 4.  (Fungsi tambahan Jason)
 def usernamevalid(username,arr_user):  
     # Spesifikasi program : memvalidasi apakah username valid
     # ALGORITMA
-    barisuser = length(pop_firstline(arr_user))
-    for b in range(barisuser):
-        if arr_user[b+1][1] == username:
+    baris = length(arr_user)
+    for b in range(baris):
+        if arr_user[b][1] == username:
             return True
     return False

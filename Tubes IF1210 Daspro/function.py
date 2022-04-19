@@ -7,6 +7,20 @@ import os
 import sys
 import time
 
+import F02_Register as F02
+import F08_BuyGame as F08
+import F09_ListGame as F09
+import F10_SearchInventory as F10
+import F11_SearchGameAtStore as F11
+import F12_TopUp as F12
+import F13_Riwayat as F13
+import F14_Help as F14
+import F16_Save as F16
+import F17_Exit as F17
+
+import B02_MagicShell as B02
+import B03_TicTacToe as B03
+
 def goBackEnter():
 	# Spesifikasi program : Membuat user kembali ke tampilan sebelumnya
 	# KAMUS LOKAL
@@ -33,61 +47,122 @@ def clearLast():
 	sys.stdout.write('\x1b[1A')
 	sys.stdout.write('\x1b[2K')
 
-def pilihMenuAdmin():
-	# Spesifikasi program : Memilih menu yang akan digunakan Admin
+def funcuser(username,iduser,arr_game,arr_kepemilikan,arr_riwayat,arr_user):
+    # Spesifikasi program : Memunculkan fitur yang dapat diakses user
 	# KAMUS LOKAL
-	# pilih : int
+	# pilihLogin : int
 	# ALGORITMA
-	print('''-------------------------------
+    wait(1.5)
+    clearScreen()
+    # Mengimport fungsi pilih menu yang bisa dilakukan admin dan validasinya
+    benar = True
+    while benar:
+        print('''-------------------------------
             BINOMO
 -------------------------------''')
-	print('''
-Pilih menu:
-1. register
-2. tambah_game
-3. ubah_game
-4. ubah_stok
-5. list_game_toko
-6. search_game_at_store
-7. topup
-8. help
-9. save
-0. exit
-		''')
-	pilih = input("Pilih nomor menu: ")
-	if(not(pilih.isnumeric()) or int(pilih) < 0 or int(pilih) > 9):
-		clearScreen()
-		print("Menu tidak terdaftar! Silahkan coba lagi")
-		clearScreen()
-		pilih = pilihMenuAdmin()
-	return(int(pilih))
+        print('Selamat datang,',username,'!')
+        print("\nsilakan ketik 'help' jika membutuhkan bantuan")
+        print("\nMeminta perintah berikutnya")
+        ketik = input()
+        if (ketik == "list_game_toko"):
+            wait(1.5)
+            #F09.game_list(user_id, arr_kepemilikan, arr_game)
+        elif (ketik == "buy_game"):
+            wait(1.5)
+            F08.buygame(iduser,arr_game,arr_kepemilikan,arr_riwayat,arr_user)
+        elif (ketik == "list_game"):
+            wait(1.5)
+            F09.game_list(iduser,arr_kepemilikan,arr_game)
+        elif (ketik == "search_my_game"):
+            wait(1.5)
+            F10.search_my_game(username, arr_game, arr_kepemilikan)
+        elif (ketik == "search_game_at_store"):
+            wait(1.5)
+            F11.search_game_at_store (arr_game)
+        elif (ketik == "riwayat"):
+            wait(1.5)
+            F13.riwayat(username,arr_kepemilikan, arr_riwayat)
+        elif (ketik == "help"):
+            wait(1.5)
+            F14.help()
+        elif (ketik == "save"):
+            wait(1.5)
+            F16.save(arr_game,arr_kepemilikan,arr_riwayat,arr_user)
+        elif (ketik == "exit"):
+            wait(1.5)
+            F17.exit(arr_game,arr_kepemilikan,arr_riwayat,arr_user)
+            benar = False
+        # MINIGAME
+        elif (ketik == "magic_shell"):
+            wait(1.5)
+            B02.kerangajaib()
+        elif (ketik == "tictactoe"):
+            wait(1.5)
+            B03.tictactoe()
+        else:
+            print("\nperintah tidak valid, silahkan input ulang")
+            clearScreen()
+            benar = True
 
-def pilihMenuUser():
-	# Spesifikasi program : Memilih menu yang akan digunakan User
+def funcadmin(username,iduser,arr_game,arr_kepemilikan,arr_riwayat,arr_user):
+    # Spesifikasi program : Memunculkan fitur yang dapat diakses admin
 	# KAMUS LOKAL
-	# pilih : int
-	# ALGORITMA 
-	print('''-------------------------------
+	# pilihLogin : int
+	# ALGORITMA
+    wait(1.5)
+    clearScreen()
+    # Mengimport fungsi pilih menu yang bisa dilakukan admin dan validasinya
+    benar = True
+    while benar:
+        print('''-------------------------------
             BINOMO
 -------------------------------''')
-	print('''
-Pilih menu:
-1. list_game_toko
-2. buy_game
-3. list_game
-4. search_my_game
-5. search_game_at_store
-6. riwayat
-7. help
-8. save
-0. exit
-		''')
-	pilih = input("Pilih nomor menu: ")
-	if(not(pilih.isnumeric()) or int(pilih) < 0 or int(pilih) > 8):
-		clearScreen()
-		print("Menu tidak terdaftar! Silahkan coba lagi")
-		pilih = pilihMenuUser()
-	return(int(pilih))
+        print('Selamat datang,',username,'!')
+        print("\nsilakan ketik 'help' jika membutuhkan bantuan")
+        print("\nMeminta perintah berikutnya")
+        ketik = input()
+        if (ketik == "register"):
+            wait(1.5)
+            F02.registAdmin(arr_user)
+        elif (ketik == "tambah_game"):
+            wait(1.5)
+            #F08.buygame(iduser,arr_game,arr_kepemilikan,arr_riwayat,arr_user)
+        elif (ketik == "ubah_game"):
+            wait(1.5)
+            #F09.game_list(iduser,arr_kepemilikan,arr_game)
+        elif (ketik == "ubah_stok"):
+            wait(1.5)
+            #F09.game_list(user_id, arr_kepemilikan, arr_game)
+        elif (ketik == "list_game_toko"):
+            wait(1.5)
+            #F09.game_list(user_id, arr_kepemilikan, arr_game)
+        elif (ketik == "search_game_at_store"):
+            wait(1.5)
+            F11.search_game_at_store (arr_game)
+        elif (ketik == "topup"):
+            wait(1.5)
+            F12.topup(arr_user)
+        elif (ketik == "help"):
+            wait(1.5)
+            F14.help()
+        elif (ketik == "save"):
+            wait(1.5)
+            F16.save(arr_game,arr_kepemilikan,arr_riwayat,arr_user)
+        elif (ketik == "exit"):
+            wait(1.5)
+            F17.exit(arr_game,arr_kepemilikan,arr_riwayat,arr_user)
+            benar = False
+        # MINIGAME
+        elif (ketik == "magic_shell"):
+            wait(1.5)
+            B02.kerangajaib()
+        elif (ketik == "tictactoe"):
+            wait(1.5)
+            B03.tictactoe()
+        else:
+            print("\nperintah tidak valid, silahkan input ulang")
+            clearScreen()
+            benar = True
 
 # Fungsi Tambahan Julian :
 
@@ -162,11 +237,11 @@ def OpenCSV(cSv,col,row):
     j = 0
     for c in arrayCsV2:
         s = ""
-        c += ";"
+        c += ","
         r2 = lList(c)
         i = 0
         for l in range(r2):
-            if c[l]!=";":
+            if c[l]!=",":
                 s += c[l]
             else: 
                 arrayCsV3[j][i] = s  
@@ -191,7 +266,7 @@ def writeCSV(cSv,M,col,row):
         e = ""
         for i in range(col):
             if i!=col-1:
-                e+=M[j][i]+";"
+                e+=M[j][i]+","
             else:
                 e+=M[j][i]
                 TabS[j]=e 

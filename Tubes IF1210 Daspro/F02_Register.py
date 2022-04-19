@@ -34,7 +34,7 @@ def registervalid(username,arr_user):
     # username : string
     # arr_user : array of string
 	# ALGORITMA
-    baris = var.banyakbaris(arr_user)
+    baris = var.length(arr_user)
     for b in range(baris):
         if arr_user[b][1] == username:
             return False
@@ -47,18 +47,18 @@ def adduser(username_baru,nama,pswd_baru,arr_user):
     # baru, arr_user : array of string
     # ALGORITMA
     # Deklarasi array baru user
-    baru = ['' for i in range(6)]
-    baris = var.banyakbaris(arr_user)
+    baris = var.length(arr_user)
+    arr_user += [['' for i in range(6)]]
     # mengisi array baru dengan data user baru
-    baru[0] = baris
-    baru[1] = username_baru
-    baru[2] = nama
-    baru[3] = pswd_baru
-    baru[4] = "user"
-    baru[5] = 0
+    arr_user[baris][0] += str(baris+1)
+    arr_user[baris][1] += username_baru
+    arr_user[baris][2] += nama
+    arr_user[baris][3] += pswd_baru
+    arr_user[baris][4] += "user"
+    arr_user[baris][5] += str(0)
 
     # menambah array baru ke database
-    arr_user[baris-1] += [baru]
+    return arr_user
 
 def yesorno():
     # Spesifikasi program : Menanayakan apakah akan melanjutkan memasukkan input
@@ -125,3 +125,4 @@ def registAdmin(arr_user):
         adduser(username_baru,nama,pswd_baru,arr_user)
         print(f"\nUsername {username_baru} telah berhasil register ke dalam “Binomo”.")
     func.goBackEnter()
+    func.clearScreen()

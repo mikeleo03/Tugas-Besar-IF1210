@@ -17,14 +17,14 @@ def addkepemilikan(gameid_baru,userid_baru,arr_kepemilikan):
     # gamebaru, arr_kepemilikan : array of string
     # ALGORITMA
     # Deklarasi array baru user
-    gamebaru = ['' for i in range(2)]
-    baris = var.banyakbaris(arr_kepemilikan)
+    baris = var.length(arr_kepemilikan)
+    arr_kepemilikan += [['' for i in range(2)]]
     # mengisi array baru dengan data user baru
-    gamebaru[0] = gameid_baru
-    gamebaru[1] = int(userid_baru)
+    arr_kepemilikan[baris][0] += gameid_baru
+    arr_kepemilikan[baris][1] += userid_baru
 
     # menambah array baru ke database
-    arr_kepemilikan[baris] += [gamebaru]
+    return arr_kepemilikan
 
 def addriwayat(ID_Game,namagame,hargagame,ID_user,tahun,arr_riwayat):
     # Spesifikasi program : Menambahkan data riwayat pembelian game oleh user
@@ -34,40 +34,41 @@ def addriwayat(ID_Game,namagame,hargagame,ID_user,tahun,arr_riwayat):
     # riwayatbaru, arr_riwayat : array of string
     # ALGORITMA
     # Deklarasi array baru user
-    riwayatbaru = ['' for i in range(5)]
-    baris = var.banyakbaris(arr_riwayat)
+    baris = var.length(arr_riwayat)
+    arr_riwayat += [['' for i in range(5)]]
     # mengisi array baru dengan data user baru
-    riwayatbaru[0] = ID_Game
-    riwayatbaru[1] = namagame
-    riwayatbaru[2] = hargagame
-    riwayatbaru[3] = ID_user
-    riwayatbaru[4] = tahun
+    arr_riwayat[baris][0] += ID_Game
+    arr_riwayat[baris][1] += namagame
+    arr_riwayat[baris][2] += hargagame
+    arr_riwayat[baris][3] += ID_user
+    arr_riwayat[baris][4] += tahun
 
     # menambah array baru ke database
-    arr_riwayat[baris] += [riwayatbaru]
+    return arr_riwayat
 
 def buygame(ID_user,arr_game, arr_kepemilikan, arr_riwayat, arr_user):
     # Spesifikasi program : Memunculkan akses buygame untuk user
     # KAMUS LOKAL
-    # hargagame, saldo, indeksdata : integer
-    # namagame, ID_Game : string
+    # saldo, indeksdata, stok : integer
+    # namagame, ID_Game, hargagame : string
     # success, saldocukup, punya : boolean
     # gameid_kepemilikan, id_pemilik : array of string
     # data_game_toko, data_harga_game, data_stok_game : array of string
 	# ALGORITMA
     func.clearScreen()
     func.wait(1)
-    hargagame = 0
     saldo = 0
     indeksdata = 0
+    stok = 0
+    hargagame = ''
     namagame = ''
     ID_Game = ''
     success = False
     saldocukup = True
     punya = False
 
-    bariskepemilikan = var.banyakbaris(arr_kepemilikan)
-    barisgame = var.banyakbaris(arr_game)
+    bariskepemilikan = var.length(arr_kepemilikan)
+    barisgame = var.length(arr_game)-1
     
     print("=========== Beli Game Baru ===========")
     ID_Game = input("Masukkan ID Game: ")
@@ -75,31 +76,38 @@ def buygame(ID_user,arr_game, arr_kepemilikan, arr_riwayat, arr_user):
     gameid_kepemilikan = ['' for i in range(bariskepemilikan)]
     id_pemilik = ['' for i in range(bariskepemilikan)]
     data_game_toko = ['' for i in range(barisgame)]
+    data_nama_game = ['' for i in range(barisgame)]
     data_harga_game = ['' for i in range(barisgame)]
     data_stok_game = ['' for i in range(barisgame)]
+
+    saldo = int(arr_user[ID_user-1][5])
     for b in range(bariskepemilikan):
         gameid_kepemilikan[b] = arr_kepemilikan[b][0]
         id_pemilik[b] = arr_kepemilikan[b][1]
-    for b in range(barisgame):
-        data_game_toko[b] = arr_game[b][0]
-        data_harga_game[b] = arr_game[b][4]
-        data_stok_game[b] = arr_game[b][5]
-    saldo = int(arr_user[ID_user][5])
+    for k in range(barisgame):
+        data_game_toko[k] = arr_game[k][0]
+        data_nama_game[k] = arr_game[k][1]
+        data_harga_game[k] = arr_game[k][4]
+        data_stok_game[k] = arr_game[k][5]
         
     # Pengolahan data berdasar kemungkinan
     for i in range(bariskepemilikan):
         # Kasus 1 : Game sudah dimiliki
-        if gameid_kepemilikan[i] == ID_Game and int(id_pemilik[i]) == ID_user:
-            success = False
+        if gameid_kepemilikan[i] == ID_Game and int(id_pemilik[i]) == int(ID_user):
             punya = True
+            success = False
             break
         else :
             for i in range(barisgame):
                 # Kasus 2 : Berhasil, game ada, game belum dimiliki, dan saldo cukup
                 if data_game_toko[i] == ID_Game and saldo >= int(data_harga_game[i]) and int(data_stok_game[i])>0:
                     indeksdata += i
-                    namagame = ID_Game
-                    hargagame += int(data_harga_game[i])
+                    namagame = data_nama_game[i]
+                    hargagame = data_harga_game[i]
+                    # mengurangi stok
+                    stokawal = data_stok_game[i]
+                    stok = int(stokawal) - 1
+                    arr_game[i][5] = str(stok)
                     success = True
                     break
                 # Kasus 3 : Game ada, game belum dimiliki, tetapi saldo tidak mencukupi
@@ -120,7 +128,7 @@ def buygame(ID_user,arr_game, arr_kepemilikan, arr_riwayat, arr_user):
         print("Loading...")
         func.wait(1)
         print("\nSaldo anda tidak cukup untuk membeli Game tersebut!")
-    elif success == False : # Jika semuanya gagal
+    elif success == False and punya == False : # Jika semuanya gagal
         print("Loading...")
         func.wait(1)
         print("\nStok Game tersebut sedang habis!") 
@@ -128,8 +136,11 @@ def buygame(ID_user,arr_game, arr_kepemilikan, arr_riwayat, arr_user):
         print("Loading...")
         func.wait(1)
         # Mengurangi saldo, menambah game ke koleksi
-        saldo -= hargagame
-        addkepemilikan(ID_Game,ID_user,arr_kepemilikan)
-        addriwayat(ID_Game,namagame,hargagame,ID_user,2022,arr_riwayat)
+        saldo -= int(hargagame)
+        addkepemilikan(ID_Game,str(ID_user),arr_kepemilikan)
+        addriwayat(ID_Game,namagame,hargagame,str(ID_user),str(2022),arr_riwayat)
+        arr_user[ID_user-1][5] = str(saldo)
         print("\nGame",namagame,"berhasil dibeli!")
     func.goBackEnter()
+    func.clearScreen()
+    return arr_game, arr_kepemilikan, arr_riwayat, arr_user

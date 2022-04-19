@@ -8,8 +8,11 @@
 # import fungsi, prosedur, dan variabel buatan dari file lain
 import function as func
 
-# definisi papan tic-tac-toe
 board = [['_' for b in range (3)] for k in range (3)]
+# definisi papan tic-tac-toe
+def clearpapan():
+    board = [['_' for b in range (3)] for k in range (3)]
+    return board
 
 def menang(char):
     # Spesifikasi program : Persyaratan agar salah satu pemain menang beserta outputnya
@@ -17,6 +20,7 @@ def menang(char):
 	# char : character
     # board : matriks character
 	# ALGORITMA
+    # definisi papan tic-tac-toe
     # Menang secara horizontal
     if board[0][0] == board[0][1] == board[0][2] == char:
         print("Selamat!,",char,"menang secara horizontal.")
@@ -58,6 +62,7 @@ def inputpernah(polabaris,polakolom):
 	# KAMUS LOKAL
 	# polabaris, polakolom : integer
 	# ALGORITMA
+    # definisi papan tic-tac-toe
     if board[polakolom-1][polabaris-1] == "O" or board[polakolom-1][polabaris-1] == "X":
         return True
 
@@ -68,10 +73,12 @@ def pemain(char):
     # char : character
     # board : matriks character
 	# ALGORITMA
+    # definisi papan tic-tac-toe
     while True:
         print(f"\nPemain {char}, silakan masukkan bagian yang ingin diisi")
         polabaris = int(input("Masukkan baris : "))
         polakolom = int(input("Masukkan kolom : "))
+        # Asumsi input pasti berupa integer
         if inputgagal(polabaris,polakolom):
             print("\ninput salah, silakan masukkan bilangann antara 1-3")
         else :
@@ -129,9 +136,12 @@ Pemain yang menyelesaikan 3 tanda berturut-turut akan menjadi pemenang!
         pemain(attempt[i])
         counti -= 1
         if menang('X') or menang('O'):
+            clearpapan()
             break
         elif counti == 0:
             print("Permainan berakhir seri!")
+            clearpapan()
             break
 
     func.goBackEnter()
+    func.clearScreen()

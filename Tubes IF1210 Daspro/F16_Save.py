@@ -8,6 +8,7 @@
 
 # import fungsi, prosedur, dan variabel buatan dari file lain
 import os
+import function as func
 import F15_Load as F15
 import variables as var
 
@@ -79,5 +80,5 @@ def save(arr_game, arr_kepemilikan, arr_riwayat, arr_user):
     arrtocsv(arr_kepemilikan, lokasi + str(chr(92)) + "kepemilikan.csv")
     arrtocsv(arr_riwayat, lokasi + str(chr(92)) + "riwayat.csv")
     arrtocsv(arr_user, lokasi + str(chr(92)) + "user.csv")
-    
-#arrtocsv
+    func.goBackEnter()
+    func.clearScreen()
