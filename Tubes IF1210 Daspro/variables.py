@@ -147,10 +147,11 @@ def user_id(username):
             return arraydatauser[b][0]
 
 # 9.  (Fungsi tambahan Jason)
-def usernamevalid(username):  
+def usernamevalid(username,arr_user):  
     # Spesifikasi program : memvalidasi apakah username valid
     # ALGORITMA
+    barisuser = length(pop_firstline(arr_user))
     for b in range(barisuser):
-        if arraydatauser[b][1] == username:
+        if arr_user[b+1][1] == username:
             return True
     return False
