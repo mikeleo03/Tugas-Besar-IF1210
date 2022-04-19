@@ -92,6 +92,7 @@ def funcuser(username,iduser,arr_game,arr_kepemilikan,arr_riwayat,arr_user):
             wait(1.5)
             F17.exit(arr_game,arr_kepemilikan,arr_riwayat,arr_user)
             benar = False
+            break
         # MINIGAME
         elif (ketik == "magic_shell"):
             wait(1.5)
@@ -152,6 +153,7 @@ def funcadmin(username,iduser,arr_game,arr_kepemilikan,arr_riwayat,arr_user):
             wait(1.5)
             F17.exit(arr_game,arr_kepemilikan,arr_riwayat,arr_user)
             benar = False
+            break
         # MINIGAME
         elif (ketik == "magic_shell"):
             wait(1.5)

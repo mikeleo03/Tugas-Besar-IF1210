@@ -42,6 +42,7 @@ while benar:
         func.wait(2)
         F17.exit(arr_game,arr_kepemilikan, arr_riwayat,arr_user)
         benar = False
+        break
     else:
         print("\nperintah tidak valid, silahkan input ulang")
         benar = True
