@@ -26,7 +26,7 @@ def my_game(username, arr_game, arr_kepemilikan):
     arr_game2 = var.pop_firstline(arr_game)
     baris_game = var.length(arr_game2)
     
-    arr = ['' for i in range(baris_inv)] # deklarasi array kosong
+    arr = ['' for i in range(baris_data)] # deklarasi array kosong
     baris=0
     for i in range (baris_data):
         if arr_data[i][1] == user_id:
