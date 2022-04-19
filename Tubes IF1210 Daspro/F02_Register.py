@@ -71,7 +71,7 @@ def yesorno():
         if (pil == "n" or pil == "y"):
             break
         else:
-            print("input salah,masukkan y/n. (y/n)")
+            print("\n input salah,masukkan y/n. (y/n)")
     return(pil)
 
 def registAdmin(arr_user):
