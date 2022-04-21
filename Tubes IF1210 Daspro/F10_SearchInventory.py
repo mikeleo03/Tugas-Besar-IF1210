@@ -2,8 +2,8 @@
 # Spesifikasi program : Program yang akan dijalankan jika pengguna memilih "search_my_game" dan akan mencari game di inventory user
 
 # KAMUS
-# data_inv, hist : csv
-# baris_data, kolom_data, baris_hist, kolom_hist : integer
+# arr_game, arr_kepemilikan : array of string
+# username : string
 
 # ALGORITMA
 # import fungsi, prosedur, dan variabel buatan dari file lain
