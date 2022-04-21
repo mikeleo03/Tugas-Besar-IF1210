@@ -3,20 +3,20 @@ def UbahGame(M):
     # Spesifikasi program : Menginput perubahan data game yang baru ke dalam matriks (selain id dan stok pada game)
     # KAMUS
     # M : array [1..row] of array [1..col] of string
-    # i : integer
+    # i, col, row : integer
     # Found : boolean
     # Id, nama, kategori, tahun_rilis, harga : string
-    # newGame : array [1] of array [1..6] of string
-    # newM : array [1..(row+1)] of array [1..col] of string
     # ALGORITMA
     col = 6
     row = func.count_row("game.csv")
     Id = str(input("Masukkan id game : "))
     Found = False
-    for i in range (1,row):
+    i = 0
+    while i<row and Found==False:
         if Id==M[i][0]:
             Found = True
             break
+        else : i+=1
     if Found:
         nama = str(input("Masukkan nama game : "))
         if nama!='':
