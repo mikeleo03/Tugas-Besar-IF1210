@@ -1,5 +1,5 @@
-import function as fun
-def ubahS(cSv,M,col,row):
+import function as func
+def UbahStok(M):
     # Spesifikasi program : Menambahkan stok game pada matriks
     # KAMUS
     # M : array [1..row] of array [1..col] of string
@@ -10,6 +10,8 @@ def ubahS(cSv,M,col,row):
     Val = True
     Found = False
     i = 0
+    col = 6
+    row = func.count_row("game.csv")
     while Found==False:
         i+=1
         if Id==M[i][0]:
@@ -32,18 +34,4 @@ def ubahS(cSv,M,col,row):
         Val = False
     # Jika stok berhasil diubah
     if Val:
-        fun.writeCSV(cSv,M,col,row)
-
-
-# Spesifikasi program : Menambahkan game pada list
-# KAMUS
-# file : csv
-# GList : array [1..row] of array [1..col] of string
-# NList : array [1..(row+1)] of array [1..col] of string
-# ALGORITMA
-file = open("game.csv",'r')
-# Definisi baris dan kolom (didefinisikan sebelumnya)
-col = 6
-row = fun.count_row("game.csv")
-GList = fun.OpenCSV(file,col,row) # Menginput csv ke dalam array
-ubahS("game.csv",GList,col,row)
+        func.writeCSV("game.csv",M,col,row)
