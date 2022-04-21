@@ -37,13 +37,13 @@ def TambahGame(M):
         tahun_rilis = str(input("Masukkan tahun rilis game : "))
         harga = str(input("Masukkan harga game : "))
         stok = str(input("Masukkan stok awal : "))
+    row+=1
     Id = makeId(row)
     newGame = [[Id,nama,kategori,tahun_rilis,harga,stok]]
-    row+=1
     newM = M+newGame
     print("Penambahan game sukses")
     func.wait(1.5)
     func.clearScreen()
-    func.writeCSV("game.csv",M,col,row)
+    func.writeCSV("game.csv",newM,col,row)
     return newM
 
