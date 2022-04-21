@@ -14,9 +14,10 @@ def my_game(username, arr_game, arr_kepemilikan):
     # Spesifikasi program : menghasilkan array dari inventory game user
 
     # KAMUS LOKAL
-    # baris_data, arr_data: integer
+    # baris_data, baris_game, baris: integer
     # user_id : string
     # arr, arr_filter : array of string
+    # i, j : integer
 
     # ALGORITMA
     user_id = var.user_id(username)
@@ -44,8 +45,9 @@ def search_my_game(username, arr_game, arr_kepemilikan):
     # Spesifikasi program : menghasilkan array dari filter inventory game user, username sudah dicek dan pasti valid
 
     # KAMUS LOKAL
-    # baris_mygame, parameter, kolom_search : integer
+    # baris_mygame, parameter, kolom_search, baris2 : integer
     # user_id, game_id, tahun : string (string karena menyesuaikan dengan tipe data array)
+    # arr_mygame, arr2 : array of string
 
     # ALGORITMA
     func.clearScreen()
@@ -74,11 +76,11 @@ def search_my_game(username, arr_game, arr_kepemilikan):
     
     print()
     print("Daftar game pada inventory yang memenuhi kriteria:")
-    if ((parameter>0) and (baris_search==0) or (baris_search==0)): # user memasukkan lebih dari 1 parameter dan tidak ada sesuai atau user tidak memiliki game
+    if ((parameter>0) and (baris_search==0)) or (baris_search==0): # user memasukkan lebih dari 1 parameter dan tidak ada sesuai atau user tidak memiliki game
         print("Tidak ada game pada inventory-mu yang memenuhi kriteria")
     else:
         kolom_search = var.length(arr_search[0]) # menghitung panjang kolom dari array filter
-        panjang_kolom = var.array_max_kolom(arr_search)
+        panjang_kolom = var.array_max_kolom(arr_search) # agar hasil output lebih rapi
 
         # menampilkan hasil array filter
         for i in range (baris_search):
