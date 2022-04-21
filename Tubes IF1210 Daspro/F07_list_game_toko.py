@@ -1,4 +1,4 @@
-import function as fun    
+import function as func    
 def SSort():
     # Spesifikasi program : Menerima input user dalam menentukan skema sorting yang diinginkan
     # KAMUS
@@ -29,16 +29,16 @@ def showSort(M,row):
     k = 0
     PKolE = [0 for k in range(6)]
     while i<6:
-        max = fun.lList(M[0][i])
+        max = func.lList(M[0][i])
         for j in range(row):
-            if fun.lList(M[j][i])>max:
-                max = fun.lList(M[j][i])
+            if func.lList(M[j][i])>max:
+                max = func.lList(M[j][i])
         PKolE[k] = max
         i+=1
         k+=1
     for j in range (row):
         for i in range(6):
-            kol_i = fun.lList(M[j][i])
+            kol_i = func.lList(M[j][i])
             if kol_i==PKolE[i]:
                 if i==0 and j!=0:
                     e = str(j)+". "+M[j][i]+" ||"
@@ -52,7 +52,7 @@ def showSort(M,row):
                 else :
                     e = M[j][i]+(sel*" ")+"||"
                 print(e, end="")
-            fun.wait(0.001)
+            func.wait(0.001)
         print("")
   
 def FindMin(M,col,row,x,mark):
@@ -155,9 +155,9 @@ def Fill_M(M,N,col,row,x,mark,min,max):
     return N
 
 
-def SortMat(M,col,row):
+def ListGame(M):
     # Spesifikasi program : Merupakan sub-program utama dalam sorting matriks, sub-program ini menjadi penghubung antara 
-    # sub-program lainnya dalam menjalankan fungsi list game ini
+    # sub-program lainnya dalam menjalankan funcgsi list game ini
     # KAMUS
     # i, x, col, row, mark: integer
     # val : boolean
@@ -165,6 +165,8 @@ def SortMat(M,col,row):
     # M, N : array [1..row] of array [1..col] of string 
     # ALGORITMA
     mark = -9999
+    col = 6
+    row = func.count_row('game.csv')
     SLG = [["" for i in range(col)] for j in range(row)]
     for i in range(col):
         SLG[0][i] = M[0][i]
@@ -184,15 +186,3 @@ def SortMat(M,col,row):
             print("Skema Sorting tidak valid!")
     if val:
         showSort(SL,row)
-        
-# Spesifikasi program : Merupakan program utama dalam fungsi list game toko
-# KAMUS
-# file : csv
-# GList : array [1..row] of array [1..col] of string
-# ALGORITMA
-file = open("game.csv",'r')
-# # Definisi baris dan kolom (didefinisikan sebelumnya)
-col = 6
-row = fun.count_row("game.csv")
-GList = fun.OpenCSV(file,col,row) # Menginput csv ke dalam array
-SortMat(GList,col,row)
