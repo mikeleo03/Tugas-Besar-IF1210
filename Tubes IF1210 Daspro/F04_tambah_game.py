@@ -29,14 +29,14 @@ def TambahGame(M):
     kategori = str(input("Masukkan kategori game : "))
     tahun_rilis = str(input("Masukkan tahun rilis game : "))
     harga = str(input("Masukkan harga game : "))
-    stok = str(input("Masukkan jumlah stok game : "))
+    stok = str(input("Masukkan stok awal : "))
     while nama=='' or kategori=='' or tahun_rilis=='' or harga=='' or stok=='':
         print("Mohon agar memasukkan semua informasi mengenai game agar dapat disimpan di BNMO")
         nama = str(input("Masukkan nama game : "))
         kategori = str(input("Masukkan kategori game : "))
         tahun_rilis = str(input("Masukkan tahun rilis game : "))
         harga = str(input("Masukkan harga game : "))
-        stok = str(input("Masukkan jumlah stok game : "))
+        stok = str(input("Masukkan stok awal : "))
     Id = makeId(row)
     newGame = [[Id,nama,kategori,tahun_rilis,harga,stok]]
     row+=1
