@@ -1,4 +1,4 @@
-import function as fun
+import function as func
 def makeId(row):
     # Spesifikasi program : Membuat id game secara otomatis ketika ingin menambahkan game baru
     # KAMUS
@@ -15,7 +15,7 @@ def makeId(row):
         id = "GAME"+str(row)
     return id
 
-def addG(M,row):
+def TambahGame(M):
     # Spesifikasi program : Menginput data game baru ke matriks
     # KAMUS
     # M : array [1..row] of array [1..col] of string
@@ -23,6 +23,8 @@ def addG(M,row):
     # newGame : array [1..row] of array [1..6] of string
     # newM : array [1..(row+1)] of array [1..col] of string
     # ALGORITMA
+    col = 6
+    row = func.count_row('game.csv')                    
     nama = str(input("Masukkan nama game : "))
     kategori = str(input("Masukkan kategori game : "))
     tahun_rilis = str(input("Masukkan tahun rilis game : "))
@@ -37,23 +39,11 @@ def addG(M,row):
         stok = str(input("Masukkan jumlah stok game : "))
     Id = makeId(row)
     newGame = [[Id,nama,kategori,tahun_rilis,harga,stok]]
+    row+=1
     newM = M+newGame
     print("Penambahan game sukses")
+    func.wait(1.5)
+    func.clearScreen()
+    func.writeCSV("game.csv",M,col,row)
     return newM
 
-# Spesifikasi program : Menambahkan game pada list
-# KAMUS
-# file : csv
-# GList : array [1..row] of array [1..col] of string
-# NList : array [1..(row+1)] of array [1..col] of string
-# ALGORITMA
-file = open("game.csv",'r')
-# Definisi baris dan kolom (didefinisikan sebelumnya)
-col = 6
-row = fun.count_row("game.csv")
-GList = fun.OpenCSV(file,col,row) # Menginput csv ke dalam array
-row+=1
-NList = addG(GList,row)
-fun.wait(1.5)
-fun.clearScreen()
-fun.writeCSV("game.csv",NList,col,row)
