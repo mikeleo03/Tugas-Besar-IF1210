@@ -14,7 +14,7 @@ def my_game(username, arr_game, arr_kepemilikan):
     # Spesifikasi program : menghasilkan array dari inventory game user
 
     # KAMUS LOKAL
-    # baris_inv, baris : integer
+    # baris_data, arr_data: integer
     # user_id : string
     # arr, arr_filter : array of string
 
