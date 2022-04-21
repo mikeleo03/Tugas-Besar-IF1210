@@ -1,8 +1,7 @@
-import function as fun
-def ubahG(cSv,M,col,row):
+import function as func
+def UbahGame(M):
     # Spesifikasi program : Menginput perubahan data game yang baru ke dalam matriks (selain id dan stok pada game)
     # KAMUS
-    # cSv : csv
     # M : array [1..row] of array [1..col] of string
     # i : integer
     # Found : boolean
@@ -10,6 +9,8 @@ def ubahG(cSv,M,col,row):
     # newGame : array [1] of array [1..6] of string
     # newM : array [1..(row+1)] of array [1..col] of string
     # ALGORITMA
+    col = 6
+    row = func.count_row("game.csv")
     Id = str(input("Masukkan id game : "))
     Found = False
     for i in range (1,row):
@@ -29,21 +30,7 @@ def ubahG(cSv,M,col,row):
         harga = str(input("Masukkan harga game : "))
         if harga!='':
             M[i][4] = harga
-        fun.wait(1.5)
-        fun.clearScreen()
+        func.wait(1.5)
+        func.clearScreen()
         print("Berhasil mengubah game!")
-        fun.writeCSV(cSv,M,col,row)
-        
-
-# Spesifikasi program : Mengubah data pada game (selain ID dan Stok)
-# KAMUS
-# file : csv
-# GList : array [1..row] of array [1..col] of string
-# NList : array [1..(row+1)] of array [1..col] of string
-# ALGORITMA
-file = open("game.csv",'r')
-# Definisi baris dan kolom (didefinisikan sebelumnya)
-col = 6
-row = fun.count_row("game.csv")
-GList = fun.OpenCSV(file,col,row) # Menginput csv ke dalam array
-ubahG("game.csv",GList,col,row)
+        func.writeCSV("game.csv",M,col,row)
