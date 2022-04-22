@@ -3,7 +3,7 @@ import var
 def isNumber(x):
     # Spesifikasi program : Mengecek apakah suatu elemen array merupakan angka
     # KAMUS
-    # x : string
+    # x : chr
     # i : integer
     # Num : boolean
     # ALGORITMA
@@ -19,7 +19,7 @@ def isNumber(x):
 def isChr(x):
     # Spesifikasi program : Mengecek apakah suatu elemen array merupakan character
     # KAMUS
-    # x : string
+    # x : chr
     # ord(x): integer
     # Chr : boolean
     # ALGORITMA
@@ -31,7 +31,7 @@ def isChr(x):
 def isCap(x):
     # Spesifikasi program : Mengecek apakah suatu elemen array merupakan huruf kapital
     # KAMUS
-    # x : string
+    # x : chr
     # ord(x): integer
     # Cap : boolean
     # ALGORITMA
