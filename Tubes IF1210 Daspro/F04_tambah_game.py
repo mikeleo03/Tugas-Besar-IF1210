@@ -44,6 +44,5 @@ def TambahGame(M):
     print("Penambahan game sukses")
     func.wait(1.5)
     func.clearScreen()
-    func.writeCSV("game.csv",newM,col,row)
     return newM
 
