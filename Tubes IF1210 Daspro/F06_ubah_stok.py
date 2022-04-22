@@ -34,4 +34,4 @@ def UbahStok(M):
         Val = False
     # Jika stok berhasil diubah
     if Val:
-        func.writeCSV("game.csv",M,col,row)
+        return M
