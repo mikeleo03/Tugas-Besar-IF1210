@@ -33,4 +33,4 @@ def UbahGame(M):
         func.wait(1.5)
         func.clearScreen()
         print("Berhasil mengubah game!")
-        func.writeCSV("game.csv",M,col,row)
+        return M
