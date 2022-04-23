@@ -1,4 +1,4 @@
-import function as func
+import variables as var
 def UbahStok(M):
     # Spesifikasi program : Menambahkan stok game pada matriks
     # KAMUS
@@ -10,7 +10,7 @@ def UbahStok(M):
     Val = True
     Found = False
     i = 0
-    row = func.count_row("game.csv")
+    row = var.length(M)
     while Found==False and i<row:
         if Id==M[i][0]:
             Found = True
@@ -30,6 +30,7 @@ def UbahStok(M):
                 Val = False
     else: 
         print("Tidak ada game dengan ID tersebut")
+        Val = False
     # Jika stok berhasil diubah
     if Val:
         return M
