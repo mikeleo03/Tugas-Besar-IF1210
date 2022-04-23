@@ -67,7 +67,7 @@ def search_my_game(username, arr_game, arr_kepemilikan, arr_user):
         parameter+=1
 
     if not(tahun==""):
-        arr2,baris2 = var.array_search(arr_search,baris_search,4,tahun)
+        arr2,baris2 = var.array_search(arr_search,baris_search,3,tahun)
         arr_search = arr2
         baris_search=baris2
         parameter+=1
@@ -92,3 +92,4 @@ def search_my_game(username, arr_game, arr_kepemilikan, arr_user):
                     print(arr_search[i][j]+ " "*(max_length-length_kolom),end=" | ")
     print()
     func.goBackEnter()
+    func.clearScreen()
