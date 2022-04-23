@@ -44,7 +44,7 @@ def search_game_at_store (arr_game):
 
     if not(nama==""):
         # menyimpan array filter dan barisnya di arr_search1 dan baris_search1 karena var arr_search digunakan dalam fungsi berikutnya
-        (arr_search1,baris_search1) = var.array_search(arr_search, baris_search,1,nama)[0]
+        (arr_search1,baris_search1) = var.array_search(arr_search, baris_search,1,nama)
         arr_search = arr_search1
         baris_search = baris_search1
         parameter+=1
@@ -74,7 +74,7 @@ def search_game_at_store (arr_game):
     else: 
         kolom_search = var.length(arr_search[0]) # menghitung panjang kolom dari array filter
         panjang_kolom = var.array_max_kolom(arr_search)
-        print(arr_search)
+
         # menampilkan hasil array filter dan merapikan
         for i in range (baris_search):
             print (str(i+1) + ".",end=" ")
