@@ -30,7 +30,7 @@ def search_game_at_store (arr_game):
     tahun = str(input("Masukkan Tahun Rilis Game: "))
 
     # deklarasi
-    baris_game = var.length(arr_game)-1 # banyak baris dari array game sebelum di filter dan dikurangi 1 karena baris pertamanya hanya berupa kategori
+    baris_game = var.length(arr_game) # banyak baris dari array game sebelum di filter dan dikurangi 1 karena baris pertamanya hanya berupa kategori
     baris_search = 0 # banyak baris dari filter
     parameter = 0 # jumlah parameter input dari user
 
