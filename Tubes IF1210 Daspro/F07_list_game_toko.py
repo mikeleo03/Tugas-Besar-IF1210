@@ -41,15 +41,15 @@ def showSort(M,row):
         for i in range(6):
             kol_i = func.lList(M[j][i])
             if kol_i==PKolE[i]:
-                if i==0 and j!=0:
-                    e = str(j)+". "+M[j][i]+" ||"
+                if i==0:
+                    e = str(j+1)+". "+M[j][i]+" ||"
                 else: 
                     e = M[j][i]+" ||"
                 print(e, end="")
             else:
                 sel = PKolE[i]-kol_i+1
                 if i==0:
-                    e = M[j][i]+((sel+2)*" ")+" ||"
+                    e = str(j+1)+"."+((sel)*" ")+M[j][i]+" ||"
                 else :
                     e = M[j][i]+(sel*" ")+"||"
                 print(e, end="")
@@ -66,12 +66,12 @@ def FindMin(M,col,row,x,mark):
     # ALGORITMA
     x = abs(x)
     min = [" " for k in range(col)]
-    for j in range(1,row):
+    for j in range(row):
         if M[j][x]!=mark:
             for k in range(col):
                 min[k] = M[j][k]
             break
-    for j in range(1,row):
+    for j in range(row):
         if M[j][x]!=mark:
             if x!=4:
                 if int(M[j][x])!=mark and int(M[j][x])<int(min[x]):
@@ -99,12 +99,12 @@ def FindMax(M,col,row,x,mark):
     # ALGORITMA
     x = abs(x)
     max = [" " for k in range(col)]
-    for j in range(1,row):
+    for j in range(row):
         if M[j][x]!=mark:
             for k in range(col):
                 max[k] = M[j][k]
             break
-    for j in range(1,row):
+    for j in range(row):
         if M[j][x]!=mark:
             if x!=4:
                 if int(M[j][x])!=mark and int(M[j][x])>int(max[x]):
@@ -130,8 +130,8 @@ def Fill_M(M,N,col,row,x,mark,min,max):
     # M, N : array [1..row] of array [1..col] of string 
     # num1, num2 : string
     # ALGORITMA
-    con = 1
-    j = 1
+    con = 0
+    j = 0
     if x>=0:
         while con<row:
             if M[j][x]==min[x]:
