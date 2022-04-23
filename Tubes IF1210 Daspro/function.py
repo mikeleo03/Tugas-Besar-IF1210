@@ -8,6 +8,10 @@ import sys
 import time
 
 import F02_Register as F02
+import F04_tambah_game as F04
+import F05_ubah_game as F05
+import F06_ubah_stok as F06
+import F07_list_game_toko as F07
 import F08_BuyGame as F08
 import F09_ListGame as F09
 import F10_SearchInventory as F10
@@ -66,7 +70,7 @@ def funcuser(username,iduser,arr_game,arr_kepemilikan,arr_riwayat,arr_user):
         ketik = input()
         if (ketik == "list_game_toko"):
             wait(1.5)
-            #F09.game_list(user_id, arr_kepemilikan, arr_game)
+            F07.ListGame(arr_game)
         elif (ketik == "buy_game"):
             wait(1.5)
             F08.buygame(iduser,arr_game,arr_kepemilikan,arr_riwayat,arr_user)
@@ -102,6 +106,7 @@ def funcuser(username,iduser,arr_game,arr_kepemilikan,arr_riwayat,arr_user):
             B03.tictactoe()
         else:
             print("\nperintah tidak valid, silahkan input ulang")
+            wait(1.5)
             clearScreen()
             benar = True
 
@@ -127,16 +132,16 @@ def funcadmin(username,iduser,arr_game,arr_kepemilikan,arr_riwayat,arr_user):
             F02.registAdmin(arr_user)
         elif (ketik == "tambah_game"):
             wait(1.5)
-            #F08.buygame(iduser,arr_game,arr_kepemilikan,arr_riwayat,arr_user)
+            F04.TambahGame(arr_game)
         elif (ketik == "ubah_game"):
             wait(1.5)
-            #F09.game_list(iduser,arr_kepemilikan,arr_game)
+            F05.UbahGame(arr_game)
         elif (ketik == "ubah_stok"):
             wait(1.5)
-            #F09.game_list(user_id, arr_kepemilikan, arr_game)
+            F06.UbahStok(arr_game)
         elif (ketik == "list_game_toko"):
             wait(1.5)
-            #F09.game_list(user_id, arr_kepemilikan, arr_game)
+            F07.ListGame(arr_game)
         elif (ketik == "search_game_at_store"):
             wait(1.5)
             F11.search_game_at_store (arr_game)
@@ -163,6 +168,7 @@ def funcadmin(username,iduser,arr_game,arr_kepemilikan,arr_riwayat,arr_user):
             B03.tictactoe()
         else:
             print("\nperintah tidak valid, silahkan input ulang")
+            wait(1.5)
             clearScreen()
             benar = True
 
