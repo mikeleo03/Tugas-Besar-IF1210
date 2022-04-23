@@ -1,21 +1,20 @@
 import function as func
+import variables as var
 def UbahGame(M):
     # Spesifikasi program : Menginput perubahan data game yang baru ke dalam matriks (selain id dan stok pada game)
     # KAMUS
     # M : array [1..row] of array [1..col] of string
-    # i, col, row : integer
+    # i : integer
     # Found : boolean
     # Id, nama, kategori, tahun_rilis, harga : string
     # ALGORITMA
-    col = 6
-    row = func.count_row("game.csv")
+    row = var.length(M)
     Id = str(input("Masukkan id game : "))
     Found = False
     i = 0
     while i<row and Found==False:
         if Id==M[i][0]:
             Found = True
-            break
         else : i+=1
     if Found:
         nama = str(input("Masukkan nama game : "))
