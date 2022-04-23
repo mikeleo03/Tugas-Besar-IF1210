@@ -1,4 +1,5 @@
-import function as func    
+import function as func
+import variables as var
 def SSort():
     # Spesifikasi program : Menerima input user dalam menentukan skema sorting yang diinginkan
     # KAMUS
@@ -166,7 +167,7 @@ def ListGame(M):
     # ALGORITMA
     mark = -9999
     col = 6
-    row = func.count_row('game.csv')
+    row = var.length(M)
     SLG = [["" for i in range(col)] for j in range(row)]
     for i in range(col):
         SLG[0][i] = M[0][i]
