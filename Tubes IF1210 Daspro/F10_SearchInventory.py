@@ -10,7 +10,7 @@
 import function as func
 import variables as var
 
-def my_game(username, arr_game, arr_kepemilikan):
+def my_game(username, arr_game, arr_kepemilikan, arr_user):
     # Spesifikasi program : menghasilkan array dari inventory game user
 
     # KAMUS LOKAL
@@ -20,7 +20,7 @@ def my_game(username, arr_game, arr_kepemilikan):
     # i, j : integer
 
     # ALGORITMA
-    user_id = var.user_id(username)
+    user_id = var.user_id(username, arr_user)
     #deklarasi array
     arr_data = var.pop_firstline(arr_kepemilikan)
     baris_data = var.length(arr_data) # baris dari array kepemilikan
@@ -41,7 +41,7 @@ def my_game(username, arr_game, arr_kepemilikan):
 
     return(arr_filter,baris)
 
-def search_my_game(username, arr_game, arr_kepemilikan):
+def search_my_game(username, arr_game, arr_kepemilikan, arr_user):
     # Spesifikasi program : menghasilkan array dari filter inventory game user, username sudah dicek dan pasti valid
 
     # KAMUS LOKAL
@@ -56,7 +56,7 @@ def search_my_game(username, arr_game, arr_kepemilikan):
     game_id = str(input("Masukkan ID Game: "))
     tahun = str(input("Masukkan Tahun Rilis Game: "))
     
-    arr_mygame,baris_mygame = my_game(username,arr_game, arr_kepemilikan)
+    arr_mygame,baris_mygame = my_game(username,arr_game, arr_kepemilikan, arr_user)
     parameter = 0 # deklarasi jumlah parameter yang diinput user
     # filter data sesuai input parameter
     if (game_id ==""):
