@@ -20,17 +20,15 @@ def my_history(username, arr_kepemilikan, arr_riwayat, arr_user):
 
     # ALGORITMA
     user_id = var.user_id(username, arr_user)
-    arr_kepemilikan2 = var.pop_firstline(arr_kepemilikan)
-    baris_data = var.length(arr_kepemilikan2) # baris dari array kepemilikan
     
-    arr_hist= var.pop_firstline(arr_riwayat) # menghapus baris pertama riwayat
-    baris_hist = var.length(arr_hist)
+    baris_data = var.length(arr_kepemilikan) # baris dari array kepemilikan
+    baris_hist = var.length(arr_riwayat) # baris dari array riwayat
     
     arr = ['' for i in range(baris_data)] # deklarasi array kosong
     baris=0
     for i in range (baris_data):
-        if arr_kepemilikan2[i][1] == user_id:
-            (arr,baris) = var.array_search(arr_hist,baris_hist,3, user_id) #memfilter array riwayat sesuai user_id
+        if arr_kepemilikan[i][1] == user_id:
+            (arr,baris) = var.array_search(arr_riwayat,baris_hist,3, user_id) #memfilter array riwayat sesuai user_id
             
     arr_filter =['' for i in range(baris)] # deklarasi array lagi agar tidak ada array yg kosong
     for j in range (baris):
