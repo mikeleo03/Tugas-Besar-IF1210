@@ -3,7 +3,7 @@ def UbahStok(M):
     # Spesifikasi program : Menambahkan stok game pada matriks
     # KAMUS
     # M : array [1..row] of array [1..col] of string
-    # col, row, s, result : integer
+    # row, s, result : integer
     # Val,Found : boolean
     # ALGORITMA
     Id = str(input("Masukkan id game : "))
