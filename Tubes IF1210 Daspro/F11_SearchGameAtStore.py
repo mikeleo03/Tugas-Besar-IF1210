@@ -36,10 +36,10 @@ def search_game_at_store (arr_game):
 
     # filter sesuai input user
     if (id==""): # jika kosong maka array filter sama dengan array game
-        arr_search = var.pop_firstline(arr_game) # menghapus baris pertama array game karena hanya berisi tulisan kategori
+        arr_search = (arr_game) # menghapus baris pertama array game karena hanya berisi tulisan kategori
         baris_search = baris_game
     elif not(id==""):
-        (arr_search,baris_search) = var.array_search(var.pop_firstline(arr_game), baris_game,0,id)
+        (arr_search,baris_search) = var.array_search(arr_game, baris_game,0,id)
         parameter+=1
 
     if not(nama==""):
