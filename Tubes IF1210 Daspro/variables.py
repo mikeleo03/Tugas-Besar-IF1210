@@ -12,6 +12,9 @@ def bacacsv(namafile):
     data = open(namafile)
     stringdata = data.read()
     data.close()
+    # menambahkan "\n" jika belum
+    if not(stringdata.endswith("\n")):
+        stringdata += "\n"
     return stringdata
 
 # 2. length untuk membaca panjang array (Fungsi tambahan Jason)
@@ -87,7 +90,10 @@ def array_search (arr1, baris1, index, var1):
         if (arr1[i][index]== var1): # jika nilai dari array sesuai dengan variabel, menambahkan array tersebut ke array kosong
             arr_search[baris2]= arr1[i]
             baris2 +=1
-    return (arr_search, baris2)
+    arr_filter =['' for i in range(baris2)] # deklarasi array lagi agar tidak ada array yg kosong
+    for j in range (baris2):
+        arr_filter[j]=arr_search[j] 
+    return (arr_filter, baris2)
 
 # 8. menghitung panjang isi kolom untuk merapikan hasil output  (Fungsi tambahan Jason)
 def array_max_kolom(arr):
