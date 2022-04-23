@@ -1,4 +1,5 @@
 import function as func
+import variables as var
 def makeId(row):
     # Spesifikasi program : Membuat id game secara otomatis ketika ingin menambahkan game baru
     # KAMUS
@@ -23,8 +24,7 @@ def TambahGame(M):
     # newGame : array [1] of array [1..6] of string
     # newM : array [1..(row+1)] of array [1..col] of string
     # ALGORITMA
-    col = 6
-    row = func.count_row('game.csv')                    
+    row = var.length(M)
     nama = str(input("Masukkan nama game : "))
     kategori = str(input("Masukkan kategori game : "))
     tahun_rilis = str(input("Masukkan tahun rilis game : "))
@@ -43,6 +43,4 @@ def TambahGame(M):
     newM = M+newGame
     print("Penambahan game sukses")
     func.wait(1.5)
-    func.clearScreen()
     return newM
-
