@@ -79,24 +79,30 @@ def funcuser(username,iduser,arr_game,arr_kepemilikan,arr_riwayat,arr_user):
             F09.game_list(iduser,arr_kepemilikan,arr_game)
         elif (ketik == "search_my_game"):
             wait(1.5)
-            F10.search_my_game(username, arr_game, arr_kepemilikan)
+            F10.search_my_game(username, arr_game, arr_kepemilikan, arr_user)
         elif (ketik == "search_game_at_store"):
             wait(1.5)
             F11.search_game_at_store (arr_game)
         elif (ketik == "riwayat"):
             wait(1.5)
-            F13.riwayat(username,arr_kepemilikan, arr_riwayat)
+            F13.riwayat(username,arr_kepemilikan, arr_riwayat, arr_user)
         elif (ketik == "help"):
             wait(1.5)
-            F14.help()
+            F14.helpuser()
         elif (ketik == "save"):
             wait(1.5)
             F16.save(arr_game,arr_kepemilikan,arr_riwayat,arr_user)
-        elif (ketik == "exit"):
+        elif (ketik == "logout"):
             wait(1.5)
-            F17.exit(arr_game,arr_kepemilikan,arr_riwayat,arr_user)
-            benar = False
-            break
+            pilihan = input("Apakah Anda ingin logout dan kembali ke laman utama? (y/n) ") # menerima input pilihan
+            while pilihan not in ["y", "n", "Y", "N"]: # pilihan tidak valid
+                pilihan = input("Apakah Anda ingin logout dan kembali ke laman utama? (y/n) ")
+
+            if pilihan == "y" or pilihan == "Y": # Kembali ke laman utama
+                benar = False
+                break
+            else:
+                clearScreen()
         # MINIGAME
         elif (ketik == "magic_shell"):
             wait(1.5)
@@ -132,7 +138,7 @@ def funcadmin(username,iduser,arr_game,arr_kepemilikan,arr_riwayat,arr_user):
             F02.registAdmin(arr_user)
         elif (ketik == "tambah_game"):
             wait(1.5)
-            F04.TambahGame(arr_game)
+            arr_game = F04.TambahGame(arr_game)
         elif (ketik == "ubah_game"):
             wait(1.5)
             F05.UbahGame(arr_game)
@@ -150,15 +156,21 @@ def funcadmin(username,iduser,arr_game,arr_kepemilikan,arr_riwayat,arr_user):
             F12.topup(arr_user)
         elif (ketik == "help"):
             wait(1.5)
-            F14.help()
+            F14.helpadmin()
         elif (ketik == "save"):
             wait(1.5)
             F16.save(arr_game,arr_kepemilikan,arr_riwayat,arr_user)
-        elif (ketik == "exit"):
+        elif (ketik == "logout"):
             wait(1.5)
-            F17.exit(arr_game,arr_kepemilikan,arr_riwayat,arr_user)
-            benar = False
-            break
+            pilihan = input("Apakah Anda ingin logout dan kembali ke laman utama? (y/n) ") # menerima input pilihan
+            while pilihan not in ["y", "n", "Y", "N"]: # pilihan tidak valid
+                pilihan = input("Apakah Anda ingin logout dan kembali ke laman utama? (y/n) ")
+
+            if pilihan == "y" or pilihan == "Y": # Kembali ke laman utama
+                benar = False
+                break
+            else:
+                clearScreen()
         # MINIGAME
         elif (ketik == "magic_shell"):
             wait(1.5)
