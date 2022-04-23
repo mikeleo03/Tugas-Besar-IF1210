@@ -10,7 +10,7 @@
 import function as func
 import variables as var
 
-def my_history(username, arr_kepemilikan, arr_riwayat):
+def my_history(username, arr_kepemilikan, arr_riwayat, arr_user):
     # Spesifikasi program : menghasilkan array dari riwayat pembelian game user
 
     # KAMUS LOKAL
@@ -19,7 +19,7 @@ def my_history(username, arr_kepemilikan, arr_riwayat):
     # arr, arr_filter : array of string
 
     # ALGORITMA
-    user_id = var.user_id(username)
+    user_id = var.user_id(username, arr_user)
     arr_kepemilikan2 = var.pop_firstline(arr_kepemilikan)
     baris_data = var.length(arr_kepemilikan2) # baris dari array kepemilikan
     
@@ -37,7 +37,7 @@ def my_history(username, arr_kepemilikan, arr_riwayat):
         arr_filter[j]=arr[j]
     return(arr_filter,baris)
 
-def riwayat(username,arr_kepemilikan, arr_riwayat):
+def riwayat(username,arr_kepemilikan, arr_riwayat, arr_user):
     # Spesifikasi program : menghasilkan riwayat pembelian game user
 
     # KAMUS LOKAL
@@ -49,7 +49,7 @@ def riwayat(username,arr_kepemilikan, arr_riwayat):
     func.wait(1)
     print("=========== Riwayat ===========")
     
-    (hist_user, baris_histUser) = my_history(username,arr_kepemilikan, arr_riwayat) # memanggil fungsi mygame untuk filter game sesuai user_id
+    (hist_user, baris_histUser) = my_history(username,arr_kepemilikan, arr_riwayat, arr_user) # memanggil fungsi mygame untuk filter game sesuai user_id
 
     print()
     print("Daftar game:")
