@@ -21,19 +21,17 @@ def my_game(username, arr_game, arr_kepemilikan, arr_user):
 
     # ALGORITMA
     user_id = var.user_id(username, arr_user)
-    #deklarasi array
-    arr_data = var.pop_firstline(arr_kepemilikan)
-    baris_data = var.length(arr_data) # baris dari array kepemilikan
-    arr_game2 = var.pop_firstline(arr_game)
-    baris_game = var.length(arr_game2)
+
+    baris_data = var.length(arr_kepemilikan) # baris dari array kepemilikan
+    baris_game = var.length(arr_game)
     
     arr = ['' for i in range(baris_data)] # deklarasi array kosong
     baris=0
     for i in range (baris_data):
-        if arr_data[i][1] == user_id:
-            game_id = arr_data[i][0]
-            arr[baris] = (var.array_search(arr_game2,baris_game,0, game_id)[0])[0] #memfilter array riwayat sesuai user_id
-            baris +=var.array_search(arr_game2,baris_game,0, game_id)[1]
+        if arr_kepemilikan[i][1] == user_id:
+            game_id = arr_kepemilikan[i][0]
+            arr[baris] = (var.array_search(arr_game,baris_game,0, game_id)[0])[0] #memfilter array riwayat sesuai user_id
+            baris +=var.array_search(arr_game,baris_game,0, game_id)[1]
 
     arr_filter =['' for i in range(baris)] # deklarasi array lagi agar tidak ada array yg kosong
     for j in range (baris):
