@@ -38,6 +38,10 @@ def topup (arr_user):
         if (saldoakhir<0): # jika saldo hasilnya kurang dari 0 maka tidak valid
             print()
             print("Masukan tidak valid.")
+        elif saldo<0:
+            arr_user[i][5]=str(saldoakhir)
+            print()
+            print ("Top up berhasil. Saldo", nama, "berkurang menjadi",saldoakhir)
         else:
             arr_user[i][5]=str(saldoakhir)
             print()
