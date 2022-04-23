@@ -10,12 +10,11 @@ def UbahStok(M):
     Val = True
     Found = False
     i = 0
-    col = 6
     row = func.count_row("game.csv")
-    while Found==False:
-        i+=1
+    while Found==False and i<row:
         if Id==M[i][0]:
             Found = True
+        else: i+=1
     if Found:
         s = int(input("Masukkan jumlah : "))
         result = int(M[i][5]) + s
@@ -31,7 +30,6 @@ def UbahStok(M):
                 Val = False
     else: 
         print("Tidak ada game dengan ID tersebut")
-        Val = False
     # Jika stok berhasil diubah
     if Val:
         return M
