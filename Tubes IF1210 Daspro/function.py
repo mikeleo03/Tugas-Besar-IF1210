@@ -163,7 +163,7 @@ def funcadmin(username,iduser,arr_game,arr_kepemilikan,arr_riwayat,arr_user):
         elif (ketik == "logout"):
             wait(1.5)
             pilihan = input("Apakah Anda ingin logout dan kembali ke laman utama? (y/n) ") # menerima input pilihan
-            while pilihan not in ["y", "n", "Y", "N"]: # pilihan tidak valid
+            while pilihan != "Y" and pilihan != "y" and pilihan != "N" and pilihan != "n": # pilihan tidak valid
                 pilihan = input("Apakah Anda ingin logout dan kembali ke laman utama? (y/n) ")
 
             if pilihan == "y" or pilihan == "Y": # Kembali ke laman utama
