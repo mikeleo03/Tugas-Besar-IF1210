@@ -1,4 +1,6 @@
 id;nama;kategori;tahun_rilis;harga;stok
-GAME004;Mario Kart;Racing;2011;120000;10
-GAME121;Mario Bros;Adventure;2009;20000;10
-GAME451;Zenonia;Adventure;2011;25000;3
+GAME001;Mario Kart;Racing;2011;120000;10
+GAME002;Mario Bros;Adventure;2009;20000;7
+GAME003;Zenonia;Adventure;2011;250000;3
+GAME004;GTA;Open;2005;150000;2
+GAME005;Pokemon;Adventure;2010;3000;3
