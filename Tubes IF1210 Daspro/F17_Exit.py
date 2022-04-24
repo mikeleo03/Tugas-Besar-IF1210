@@ -19,7 +19,7 @@ def exit(arr_game, arr_kepemilikan, arr_riwayat, arr_user):
 	# ALGORITMA
     pilihan = input("Apakah Anda mau melakukan penyimpanan file yang sudah diubah? (y/n) ") # menerima input pilihan
     
-    while pilihan not in ["y", "n", "Y", "N"]: # pilihan tidak valid
+    while pilihan != "Y" or pilihan != "y" or pilihan != "N" or pilihan != "n": # pilihan tidak valid
         pilihan = input("Apakah Anda mau melakukan penyimpanan file yang sudah diubah? (y/n) ")
 
     if pilihan == "y" or pilihan == "Y": # melakukan save program
