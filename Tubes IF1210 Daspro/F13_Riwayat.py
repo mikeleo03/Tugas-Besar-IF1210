@@ -16,10 +16,11 @@ def my_history(username, arr_kepemilikan, arr_riwayat, arr_user):
     # Spesifikasi program : menghasilkan array dari riwayat pembelian game user
 
     # KAMUS LOKAL
-    # baris_inv, baris : integer
+    # baris_data, baris_hist, baris : integer
     # user_id : string
     # arr, arr_filter : array of string
-
+    # i,j : integer
+    
     # ALGORITMA
     user_id = var.user_id(username, arr_user)
     
