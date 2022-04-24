@@ -2,8 +2,10 @@
 # Spesifikasi program : Program yang akan dijalankan jika pengguna memilih "riwayat" dan akan menampilkan riwayat
 
 # KAMUS
-# data_inv, hist : csv
-# baris_data, kolom_data, baris_hist, kolom_hist : integer
+# arr_kepemilikan : array of kepemilikan
+# arr_riwayat : array of riwayat
+# arr_user : array of user
+# username: string
 
 # ALGORITMA
 # import fungsi, prosedur, dan variabel buatan dari file lain
