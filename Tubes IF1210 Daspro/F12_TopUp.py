@@ -3,8 +3,7 @@
 
 # KAMUS
 
-# array_user : array of csv
-# barisuser, kolomuser : integer
+# array_user : array of user
 
 # ALGORITMA
 # import fungsi, prosedur, dan variabel buatan dari file lain
