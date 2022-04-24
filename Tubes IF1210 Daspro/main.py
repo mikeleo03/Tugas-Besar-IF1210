@@ -31,7 +31,7 @@ import variables as var
 benar = True
 while benar:
     print("\nMeminta perintah berikutnya")
-    ketik = input()
+    ketik = input(">>")
     if (ketik == "login"):
         func.wait(2)
         F03.login(arr_game,arr_kepemilikan,arr_riwayat,arr_user)
