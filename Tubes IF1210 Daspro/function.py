@@ -222,3 +222,78 @@ def writeCSV(cSv,M,col,row):
     f = open(cSv,"w")
     f.write(Konversi)
     f.close
+
+def showM(M,col,row):
+    # Spesifikasi program : Menampilkan matriks pada usser
+    # KAMUS LOKAL
+    # M = array [1..row] of array [1..col] of string
+    # x, y, l, k : integer
+    # ALGORITMA
+    # Definisi baris dan kolom (didefinisikan sebelumnya)
+    for l in range(row):
+        for k in range(col):
+            print(M[l][k], end=" ")
+        print("")
+
+def count_row(rawData):
+    # Spesifikasi program : Menghitung jumlah baris pada CSV
+    # KAMUS LOKAL
+    # rawData,cSv, File : csv
+    # row : integer
+    # i : char
+    # ALGORITMA
+    # Definisi baris dan kolom (didefinisikan sebelumnya)
+    cSv = open(rawData,"r")
+    File = cSv.readlines()
+    row = 0
+    cSv.close()
+    for i in File:
+        row+=1
+    return row
+
+def OpenCSV(cSv,col,row):
+    # Spesifikasi program : Mengubah data pada CSV menjadi sebuah array
+    # KAMUS LOKAL
+    # cSv, File : csv
+    # i, j, r1, r2, l: integer
+    # k, e, s ,c: string
+    # l : char
+    # arrayCsV1, arrayCsV2, arrayCsV1 = array [1..row] of array [1..col] of string
+    # ALGORITMA
+    # Definisi baris dan kolom (didefinisikan sebelumnya)
+    File = cSv.readlines()
+    cSv.close()
+    arrayCsV1 = [["" for i in range(col)]for j in range(row)]
+    arrayCsV2= [["" for i in range(col)]for j in range(row)]
+    arrayCsV3= [["" for i in range(col)]for j in range(row)]
+    j = 0
+    for k in File:
+        l = 0
+        e = ""
+        arrayCsV1[j] = k
+        r1 = lList(k)
+        while l<r1:
+            if j!=row-1:
+                if k[l]!='\n':
+                    e+=k[l]
+            else: e+=k[l]
+            l+=1
+        arrayCsV2[j] = e
+        j+=1
+    j = 0
+    for c in arrayCsV2:
+        s = ""
+        c += ","
+        r2 = lList(c)
+        i = 0
+        for l in range(r2):
+            if c[l]!=",":
+                s += c[l]
+            else: 
+                arrayCsV3[j][i] = s  
+                s = ""
+                i+=1
+        if i==col:
+            j+=1
+    return arrayCsV3
+
