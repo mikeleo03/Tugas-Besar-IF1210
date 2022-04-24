@@ -10,6 +10,7 @@ import B01_Cipher as B01
 
 # SUBPROGRAM UTAMA - CSV PARSER
 # 1. Membaca csv dan mengubahnya jadi string
+# 1. Membaca csv dan mengubahnya jadi string
 def bacacsv(namafile):
     data = open(namafile)
     stringdata = data.read()
@@ -39,12 +40,11 @@ def banyakkolom(namafile):
 # 4. Banyak baris pada csv
 def banyakbaris(namafile):
     stringdata = bacacsv(namafile)
-    baris = 0
+    baris = 1
     for i in stringdata:
         if i == '\n':
             baris += 1
     return baris
-
 # 5. Ubah csv menjadi array yang bisa dimodifikasi
 def csvtoarray(namafile):
     stringdata = bacacsv(namafile)
