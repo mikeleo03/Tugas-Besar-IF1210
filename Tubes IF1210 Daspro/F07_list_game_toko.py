@@ -57,10 +57,27 @@ def showSort(M,row):
         print("")
   
 def get_max(arr, index_start,index):
-    max = int(arr[index_start][abs(index)])
-    for i in range (index_start, var.length(arr)):
-        if int(arr[i][index]) > max :
-            max=int(arr[i][index])
+    if index==0:
+        arr_id = [''for i in range(var.length(arr))]
+        for i in range (var.length(arr)):
+            for j in arr[i][0]:
+                if not(j=="G" or j=="A" or j=="M" or j =="E"):
+                    arr_id[i]+=j
+        max =int(arr_id[0])
+        for i in range (index_start, var.length(arr)):
+            if int(arr_id[i]) > max :
+                max=int(arr_id)
+        if max<10:
+            max= "GAME00"+str(max)
+        elif max<100:
+            max = "GAME0"+str(max)
+        else:
+            max ="GAME"+str(max)
+    else:
+        max = int(arr[index_start][abs(index)])
+        for i in range (index_start, var.length(arr)):
+            if int(arr[i][index]) > max :
+                max=int(arr[i][index])
     return max
 
 def get_min(arr, index_start,index):
@@ -80,8 +97,9 @@ def swap(array, indeks_1, indeks_2):
     array[indeks_1]=array[indeks_2]
     array[indeks_2]=arraytemp
 
-def sortList(arr,index):
+def sortList(arr_game,index):
     val =True
+    arr=arr_game
     if index>0:
         for i in range(var.length(arr)):
             minArr = get_min(arr, i, index)
@@ -89,14 +107,18 @@ def sortList(arr,index):
             swap(arr, i, minIdx)   # Menampilkan data naik
     elif index==0:
         print("Skema sorting berupa id")
-        return arr
-    else:                                                                     # Menampilkan data turun
+        for i in range(var.length(arr_game)):
+            maxArr = get_max(arr_game, i, index)
+            maxIdx = get_idx(arr_game, maxArr,index)
+            swap(arr_game, i, maxIdx)   # Menampilkan data naik
+    else:                                                                    
+        # Menampilkan data turun
         if index==(-4) or index==(-3): 
             index = abs(index)
             for i in range(var.length(arr)):
                 maxArr = get_max(arr, i, index)
                 maxIdx = get_idx(arr, maxArr,index)
-                swap(arr, i, maxIdx)    
+                swap(arr, i, maxIdx)
         else: 
             val = False
             print("Skema Sorting tidak valid!")
