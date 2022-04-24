@@ -6,6 +6,8 @@
 # username, password : string
 # data, users : csv
 
+import B01_Cipher as B01
+
 # SUBPROGRAM UTAMA - CSV PARSER
 # 1. Membaca csv dan mengubahnya jadi string
 def bacacsv(namafile):
@@ -126,7 +128,7 @@ def role(username,password,arr_user):
 	# ALGORITMA
     baris = length(arr_user)
     for b in range(baris):
-        if arr_user[b][1] == username and arr_user[b][3] == password:
+        if arr_user[b][1] == username and arr_user[b][3] == B01.cipher(password):
             return arr_user[b][4]
 
 # 2.
