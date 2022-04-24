@@ -67,7 +67,7 @@ def funcuser(username,iduser,arr_game,arr_kepemilikan,arr_riwayat,arr_user):
         print('Selamat datang,',username,'!')
         print("\nsilakan ketik 'help' jika membutuhkan bantuan")
         print("\nMeminta perintah berikutnya")
-        ketik = input()
+        ketik = input(">>")
         if (ketik == "list_game_toko"):
             wait(1.5)
             F07.ListGame(arr_game)
@@ -132,7 +132,7 @@ def funcadmin(username,iduser,arr_game,arr_kepemilikan,arr_riwayat,arr_user):
         print('Selamat datang,',username,'!')
         print("\nsilakan ketik 'help' jika membutuhkan bantuan")
         print("\nMeminta perintah berikutnya")
-        ketik = input()
+        ketik = input(">>")
         if (ketik == "register"):
             wait(1.5)
             F02.registAdmin(arr_user)
