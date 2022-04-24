@@ -18,7 +18,7 @@ def game_list(user_id, arr_kepemilikan, arr_game):
     # games : array of string
     # user_id : integer
     # arr_kepemilikan, arr_game: array of array of string
-    # count, i, j, k, k, m : integer
+    # count, i, j, k, l, m : integer
 
 	# ALGORITMA
     cond = False
