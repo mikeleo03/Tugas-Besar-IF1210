@@ -15,8 +15,8 @@ def topup (arr_user):
     # Spesifikasi program : menambahkan saldo pada user
 
     # KAMUS LOKAL
-    # i, b : integer
-    # username, saldo : string (string karena menyesuaikan dengan tipe data array)
+    # i, b, saldo, saldoakhir : integer
+    # username, saldoawal, nama : string (string karena menyesuaikan dengan tipe data array)
     
     # ALGORITMA
     func.clearScreen()
