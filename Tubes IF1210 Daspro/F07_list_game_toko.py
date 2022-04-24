@@ -56,134 +56,68 @@ def showSort(M,row):
             func.wait(0.001)
         print("")
   
-def FindMin(M,col,row,x,mark):
-    # Spesifikasi program : Mencari nilai minimum dari elemen matriks yang dipilih agar bisa melakukan sorting
-    # KAMUS
-    # i, j, k, x, col, row, mark: integer
-    # min : array [1..col] of integer
-    # M : array [1..row] of array [1..col] of string 
-    # num1, num2 : string
-    # ALGORITMA
-    x = abs(x)
-    min = [" " for k in range(col)]
-    for j in range(row):
-        if M[j][x]!=mark:
-            for k in range(col):
-                min[k] = M[j][k]
-            break
-    for j in range(row):
-        if M[j][x]!=mark:
-            if x!=4:
-                if int(M[j][x])!=mark and int(M[j][x])<int(min[x]):
-                    for k in range(col):
-                        min[k] = M[j][k]
-            else:
-                num1 = ""
-                num2 = ""
-                for e in M[j][x]:
-                    if e!=".": num1 += e
-                for e in min[x]:
-                    if e!=".": num2 += e
-                if int(num1)!=mark and int(num1)<int(num2):
-                    for k in range(col):
-                        min[k] = M[j][k]
+def get_max(arr, index_start,index):
+    max = int(arr[index_start][abs(index)])
+    for i in range (index_start, var.length(arr)):
+        if int(arr[i][index]) > max :
+            max=int(arr[i][index])
+    return max
+
+def get_min(arr, index_start,index):
+    min = int(arr[index_start][abs(index)])
+    for i in range (index_start, var.length(arr)):
+        if int(arr[i][index]) < min :
+            min=int(arr[i][index])
     return min
 
-def FindMax(M,col,row,x,mark):
-    # Spesifikasi program : Mencari nilai maksimum dari elemen matriks yang dipilih agar bisa melakukan sorting
-    # KAMUS
-    # i, j, k, x, col, row, mark: integer
-    # max : array [1..col] of integer
-    # M : array [1..row] of array [1..col] of string 
-    # num1, num2 : string
-    # ALGORITMA
-    x = abs(x)
-    max = [" " for k in range(col)]
-    for j in range(row):
-        if M[j][x]!=mark:
-            for k in range(col):
-                max[k] = M[j][k]
-            break
-    for j in range(row):
-        if M[j][x]!=mark:
-            if x!=4:
-                if int(M[j][x])!=mark and int(M[j][x])>int(max[x]):
-                    for k in range(col):
-                        max[k] = M[j][k]
-            else:
-                num1 = ""
-                num2 = ""
-                for e in M[j][x]:
-                    if e!=".": num1 += e
-                for e in max[x]:
-                    if e!=".": num2 += e
-                if int(num1)!=mark and int(num1)>int(num2):
-                    for k in range(col):
-                        max[k] = M[j][k]
-    return max         
+def get_idx(arr, number, index):
+    for i in range(len(arr)-1, -1, -1):
+        if arr[i][abs(index)] == str(number):
+            return i
 
-def Fill_M(M,N,col,row,x,mark,min,max):
-    # Spesifikasi program : Membuat matriks baru yang berisi nilai elemen yang sudah disorting sesuai dengan keinginan user
-    # KAMUS
-    # i, j, k, x, col, row, mark, con: integer
-    # min, max : array [1..col] of integer
-    # M, N : array [1..row] of array [1..col] of string 
-    # num1, num2 : string
-    # ALGORITMA
-    con = 0
-    j = 0
-    if x>=0:
-        while con<row:
-            if M[j][x]==min[x]:
-                for k in range(col):
-                    N[con][k] = min[k]
-                M[j][x] = mark
-                min = FindMin(M,col,row,x,mark)
-                j = 0
-                con+=1
-            else: j+=1
-    else:
-        x = abs(x)
-        while con<row:
-            if M[j][x]==max[x]:
-                for k in range(col):
-                    N[con][k] = max[k]
-                M[j][x] = mark
-                max = FindMax(M,col,row,x,mark)
-                j = 0
-                con+=1
-            else: j+=1
-    return N
+def swap(array, indeks_1, indeks_2):
+    arraytemp = array[indeks_1]
+    array[indeks_1]=array[indeks_2]
+    array[indeks_2]=arraytemp
 
-
-def ListGame(M):
-    # Spesifikasi program : Merupakan sub-program utama dalam sorting matriks, sub-program ini menjadi penghubung antara 
-    # sub-program lainnya dalam menjalankan funcgsi list game ini
-    # KAMUS
-    # i, x, col, row, mark: integer
-    # val : boolean
-    # min, max : integer
-    # M, N : array [1..row] of array [1..col] of string 
-    # ALGORITMA
-    mark = -9999
-    col = 6
-    row = var.length(M)
-    SLG = [["" for i in range(col)] for j in range(row)]
-    for i in range(col):
-        SLG[0][i] = M[0][i]
-    x = SSort()
-    if x!=0 and x!=-165:
-        min = FindMin(M,col,row,x,mark)
-        max = FindMax(M,col,row,x,mark)
-    val = True
-    if x>0: SL = Fill_M(M,SLG,col,row,x,mark,min,max)                         # Menampilkan data naik
-    elif x==0:
+def sortList(arr,index):
+    val =True
+    if index>0:
+        for i in range(var.length(arr)):
+            minArr = get_min(arr, i, index)
+            minIdx = get_idx(arr, minArr,index)
+            swap(arr, i, minIdx)   # Menampilkan data naik
+    elif index==0:
         print("Skema sorting berupa id")
-        SL = M
+        return arr
     else:                                                                     # Menampilkan data turun
-        if x==(-4) or x==(-3): SL = Fill_M(M,SLG,col,row,x,mark,min,max)      
+        if index==(-4) or index==(-3): 
+            index = abs(index)
+            for i in range(var.length(arr)):
+                maxArr = get_max(arr, i, index)
+                maxIdx = get_idx(arr, maxArr,index)
+                swap(arr, i, maxIdx)    
         else: 
             val = False
             print("Skema Sorting tidak valid!")
     if val:
-        showSort(SL,row)
+        return arr
+    else:
+        return 0
+
+def ListGame(arr):
+    # Spesifikasi program : mengurut
+
+    # KAMUS LOKAL
+    # kolom_data, baris_data, panjang_max : integer
+    # arr_kolom : array [1..kolom_data] of integer
+
+    # ALGORITMA
+    # deklarasi array kosong
+    index = SSort()
+    arr_sort= sortList(arr,index)
+    if arr_sort!=0:
+        showSort(arr_sort, var.length(arr_sort))
+
+    func.goBackEnter()
+    func.clearScreen()
