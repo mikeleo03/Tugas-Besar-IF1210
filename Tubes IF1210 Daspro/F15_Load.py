@@ -3,8 +3,7 @@
 
 # KAMUS
 # args : argumen dalam pemanggilan file python
-# cari_folder, load_data : function
-# load : procedure
+# cari_folder, load_data, load : function
 
 # ALGORITMA
 
