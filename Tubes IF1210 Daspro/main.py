@@ -3,8 +3,10 @@
 # Spesifikasi program : Program utama simulasi BINOMO
 
 # KAMUS
-# 
-# 
+# ketik : string
+# arr_game, arr_kepemilikan, arr_riwayat, arr_user : array of string
+ 
+
 
 # ALGORITMA
 # import fungsi, prosedur, dan variabel buatan dari file login.py dan variables.py
@@ -18,8 +20,10 @@ import F16_Save as F16
 import F17_Exit as F17
 import function as func
 
+# melakukan loading data
 F15.load()
 
+# inisialisasi array dari CSV
 arr_game = F15.load_data()[0]
 arr_kepemilikan = F15.load_data()[1]
 arr_riwayat = F15.load_data()[2]
@@ -28,6 +32,7 @@ arr_user = F15.load_data()[3]
 import function as func
 import variables as var
 
+# melakukan looping untuk penerimaan perintah
 benar = True
 while benar:
     print("\nMeminta perintah berikutnya")
