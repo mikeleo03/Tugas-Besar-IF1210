@@ -15,8 +15,6 @@ def bacacsv(namafile):
     stringdata = data.read()
     data.close()
     # menambahkan "\n" jika belum
-    if not(stringdata.endswith("\n")):
-        stringdata += "\n"
     return stringdata
 
 # 2. length untuk membaca panjang array (Fungsi tambahan Jason)
